@@ -7,7 +7,7 @@ export default function HomePage() {
       <p className="text-lg">Full Stack Web Developer</p>
       <p className="mt-2 text-sm text-gray-600">React • Node.js • Tailwind • SQL</p>
     <Link href="/about" className="mt-4 text-blue-600 underline">
-    About Me →
+    About Me → test test test
     </Link>
     </main>
     
