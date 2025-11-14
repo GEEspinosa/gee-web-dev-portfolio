@@ -24,3 +24,24 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.underline-no-skip {
+  text-decoration-skip-ink: none;
+}
+
+
+.arrow-rotate-left {
+  transform-origin: 50% 56%;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.group:hover .arrow-rotate-left {
+  transform: rotate(-180deg) translateY(.4px);
+}
+
+
+
+
+
