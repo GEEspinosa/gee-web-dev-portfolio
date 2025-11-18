@@ -10,22 +10,32 @@ export interface TreeNodeProps {
   };
   level?: number;
   isLast?: boolean;
+  ancestorsLast?: boolean[]; // new prop to track ancestors' last sibling status
 }
-const indentPx = 16;
-const arrowWidth = 20; // px - adjust to arrow actual width + margin
 
-export default function TreeNode({ node, level = 0, isLast}: TreeNodeProps) {
+const indentPx = 16;
+const arrowWidth = 20;
+
+export default function TreeNode({ node, level = 0, isLast = true, ancestorsLast = [] }: TreeNodeProps) {
   const [isOpen, setIsOpen] = useState(false);
   const isFolder = node.type === "folder";
 
-  const hasNextSibling = !isLast
-   
+  // Determine if vertical line should show for children container:
+  // Show if any ancestor is NOT last sibling OR this node itself is NOT last sibling
+  const hasVerticalLine = ancestorsLast.includes(false) || !isLast;
+
+  // Prepare new ancestorsLast for children: add this node's isLast
+  const newAncestorsLast = [...ancestorsLast, isLast];
 
   return (
     <div>
       <div
-        className="flex items-center font-mono text-black select-none"
-        style={{ paddingLeft: `${level * indentPx}px`, lineHeight: "1.5rem" }}
+        className="flex items-center font-mono text-black select-none relative"
+        style={{
+          paddingLeft: `${level * indentPx}px`,
+          lineHeight: "1.5rem",
+          position: "relative",
+        }}
       >
         {isFolder ? (
           <button
@@ -40,7 +50,7 @@ export default function TreeNode({ node, level = 0, isLast}: TreeNodeProps) {
               lineHeight: "1",
               transition: "transform 0.2s ease",
               transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
-              width: arrowWidth, // fixed width container for arrow
+              width: arrowWidth,
               display: "inline-flex",
               justifyContent: "center",
             }}
@@ -48,18 +58,32 @@ export default function TreeNode({ node, level = 0, isLast}: TreeNodeProps) {
             ▶
           </button>
         ) : (
-          // placeholder to keep text aligned with files (no arrow)
           <span style={{ display: "inline-block", width: arrowWidth }} />
         )}
         <span>{node.name}</span>
+
+        {/* Horizontal line for all siblings */}
+        {level > 0 && (
+          <span
+            style={{
+              position: "absolute",
+              left: level * indentPx + arrowWidth - 50,
+              top: "57.5%",
+              width: 28,
+              borderBottom: "1px solid black",
+              transform: "translateY(-50%)",
+              zIndex: 1,
+            }}
+          />
+        )}
       </div>
 
-      {isFolder && isOpen && node.children && ( !isLast ?
+      {isFolder && isOpen && node.children && (
         <div
           style={{
-            borderLeft: "1px solid black",
+            borderLeft: hasVerticalLine ? "1px solid black" : "none",
             marginLeft: `${level * indentPx + 32}px`,
-            paddingLeft: `${arrowWidth + 8}px`, // push content to right to avoid overlapping line
+            paddingLeft: `${arrowWidth + 8}px`,
           }}
         >
           {node.children.map((child, index) => (
@@ -67,26 +91,12 @@ export default function TreeNode({ node, level = 0, isLast}: TreeNodeProps) {
               key={child.id}
               node={child}
               level={level + 1}
-              isLast={index === (node.children?.length ?? 0 ) - 1}
+              isLast={index === node.children!.length - 1}
+              ancestorsLast={newAncestorsLast} // pass updated ancestorsLast down
             />
           ))}
         </div>
-       : <div
-          style={{
-            borderLeft: "1px solid black",
-            marginLeft: `${level * indentPx + 32}px`,
-            paddingLeft: `${arrowWidth + 8}px`, // push content to right to avoid overlapping line
-          }}
-        >
-          {node.children.map((child, index) => (
-            <TreeNode
-              key={child.id}
-              node={child}
-              level={level + 1}
-              isLast={index === (node.children?.length ?? 0 ) - 1}
-            />
-          ))}
-        </div> )} 
+      )}
     </div>
   );
 }
