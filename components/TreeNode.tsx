@@ -64,7 +64,7 @@ export default function TreeNode({ node, level = 0, isLast }: TreeNodeProps) {
               position: "absolute",
               left: level * indentPx + arrowWidth - 50, // slightly adjust to line up nicely
               top: "57.5%",
-              width: 33, // length of horizontal line
+              width: 28, // length of horizontal line
               borderBottom: "1px solid black",
               transform: "translateY(-50%)",
               zIndex: 1,
@@ -76,7 +76,7 @@ export default function TreeNode({ node, level = 0, isLast }: TreeNodeProps) {
       {isFolder && isOpen && node.children && (
         <div
           style={{
-            borderLeft: showVerticalLine ? "1px solid black" : "none",
+            borderLeft: isFolder && node.children && node.children.length > 0 ? "1px solid black" : "none",
             marginLeft: `${level * indentPx + 32}px`,
             paddingLeft: `${arrowWidth + 8}px`,
           }}
