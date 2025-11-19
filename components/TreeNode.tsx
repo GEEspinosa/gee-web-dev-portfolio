@@ -217,6 +217,7 @@ export default function TreeNode({
           style={{
             position: "relative",
             paddingLeft: indentPx + arrowWidth,
+            backgroundColor: "rgba(255, 0, 0, 0.22)", // TEMP visible background for debugging
           }}
         >
           {/* VERTICAL TRUNK LINE (computed height) */}
@@ -230,6 +231,7 @@ export default function TreeNode({
                 height: trunkHeight,
                 backgroundColor: "black",
                 zIndex: 0,
+                
               }}
             />
           )}
