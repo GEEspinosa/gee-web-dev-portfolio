@@ -2,7 +2,7 @@
 import { useState } from "react";
 import TreeNode from "@/components/TreeNode";
 import type { TreeNodeProps } from "@/components/TreeNode";
-import ColorToggleContext from "@/context/ColorToggleContext";
+import DirectoryToggleContext from "@/context/DirectoryToggleContext";
 
 let id = 0;
 function idIncrement() {
@@ -85,16 +85,32 @@ const treeData: TreeNodeProps["node"][] = [
 
 export default function ProjectsPage() {
   const [colorToggle, setColorToggle] = useState(true);
+  const [verticalToggle, setVerticalToggle] = useState(true);
+  const [horizontalToggle, setHorizontalToggle] = useState(true);
 
   function toggleColorHandler() {
     setColorToggle((prev) => !prev);
   }
 
+  function toggleVerticalHandler() {
+    setVerticalToggle((prev) => !prev);
+  }
+
+  function toggleHorizontalHandler() {
+    setHorizontalToggle((prev) => !prev);
+  }
+
   return (
-    <ColorToggleContext.Provider value={colorToggle}>
+    <DirectoryToggleContext.Provider
+      value={{ colorToggle, verticalToggle, horizontalToggle }}
+    >
       <main className="p-8 bg-white min-h-screen">
         <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
-        <button onClick={toggleColorHandler}>color</button>
+        <div className="flex flex-row space-x-3">
+          <button onClick={toggleColorHandler}>color</button>
+          <button onClick={toggleVerticalHandler}>vertical</button>
+          <button onClick={toggleHorizontalHandler}>horizontal</button>
+        </div>
         {treeData.map((node, index) => (
           <TreeNode
             key={node.id}
@@ -103,7 +119,7 @@ export default function ProjectsPage() {
           />
         ))}
       </main>
-    </ColorToggleContext.Provider>
+    </DirectoryToggleContext.Provider>
   );
 }
 
@@ -132,4 +148,4 @@ export default function ProjectsPage() {
 //       <p className="text-red-600">Error: {message}</p>;
 //     </main>
 //   );
-// } 
+// }

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { useColorToggle } from "../context/ColorToggleContext";
+import { useDirectoryToggle } from "../context/DirectoryToggleContext";
 
 export interface TreeNodeProps {
   node: {
@@ -10,8 +10,8 @@ export interface TreeNodeProps {
     children?: TreeNodeProps["node"][];
   };
   level?: number;
-  isLast?: boolean;            // is this node the last among its siblings?
-  ancestorsLast?: boolean[];   // list tracking which ancestors were last siblings
+  isLast?: boolean; // is this node the last among its siblings?
+  ancestorsLast?: boolean[]; // list tracking which ancestors were last siblings
   colorToggle?: boolean;
 }
 
@@ -30,7 +30,8 @@ export default function TreeNode({
   isLast = true,
   ancestorsLast = [],
 }: TreeNodeProps) {
-  const colorToggle = useColorToggle()
+  const { colorToggle, verticalToggle, horizontalToggle } =
+    useDirectoryToggle();
   //
   // FOLDER STATE
   //
@@ -41,8 +42,7 @@ export default function TreeNode({
   //
   // ANCESTRY TRACKING (used for drawing vertical ancestor lines — not currently active)
   //
-  const newAncestorsLast =
-    level === 0 ? [] : [...ancestorsLast, isLast];
+  const newAncestorsLast = level === 0 ? [] : [...ancestorsLast, isLast];
 
   //
   // DYNAMIC VERTICAL LINE POSITIONING
@@ -91,7 +91,9 @@ export default function TreeNode({
       //
       const firstRow = children[0].querySelector<HTMLElement>(".tree-node-row");
       const lastRow =
-        children[children.length - 1].querySelector<HTMLElement>(".tree-node-row");
+        children[children.length - 1].querySelector<HTMLElement>(
+          ".tree-node-row"
+        );
 
       if (!firstRow || !lastRow) {
         setTrunkHeight(0);
@@ -106,8 +108,7 @@ export default function TreeNode({
       const lastTop = lastRow.getBoundingClientRect().top;
       const lastHeight = lastRow.getBoundingClientRect().height;
 
-      const distance =
-        (lastTop + lastHeight) - firstTop;
+      const distance = lastTop + lastHeight - firstTop;
 
       //
       // Apply the tuning offset (-10) that makes your L-shapes perfect
@@ -154,7 +155,6 @@ export default function TreeNode({
   //
   return (
     <div style={{ position: "relative" }}>
-      
       {/* ─────────────────────────────
           NODE ROW (label + arrow)
          ───────────────────────────── */}
@@ -196,7 +196,7 @@ export default function TreeNode({
         <span>{node.name}</span>
 
         {/* HORIZONTAL LINE (connects to parent’s vertical trunk) */}
-        {level > 0 && (
+        {horizontalToggle && level > 0 && (
           <span
             style={{
               position: "absolute",
@@ -219,11 +219,13 @@ export default function TreeNode({
           style={{
             position: "relative",
             paddingLeft: indentPx + arrowWidth,
-            backgroundColor: colorToggle ? "rgba(255, 0, 0, 0.22)" : "transparent" , // TEMP visible background for debugging
+            backgroundColor: colorToggle
+              ? "rgba(255, 0, 0, 0.22)"
+              : "transparent", // TEMP visible background for debugging
           }}
         >
           {/* VERTICAL TRUNK LINE (computed height) */}
-          {trunkHeight > 0 && (
+          {verticalToggle && trunkHeight > 0 && (
             <span
               style={{
                 position: "absolute",
@@ -233,7 +235,6 @@ export default function TreeNode({
                 height: trunkHeight,
                 backgroundColor: "black",
                 zIndex: 0,
-                
               }}
             />
           )}
