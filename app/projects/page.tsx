@@ -1,9 +1,9 @@
 // import Link from "next/link";
 //import ProjectList from "@/components/ProjectList";
 import TreeNode from "@/components/TreeNode";
-import type {TreeNodeProps} from "@/components/TreeNode";
+import type { TreeNodeProps } from "@/components/TreeNode";
 
-const treeData: TreeNodeProps ["node"][] = [
+const treeData: TreeNodeProps["node"][] = [
   {
     id: 1,
     name: "Project A",
@@ -18,16 +18,71 @@ const treeData: TreeNodeProps ["node"][] = [
       },
     ],
   },
-  { id: 5, name: "Project B", type: "folder", children: [] },
-  { id: 6, name: "Project C", type: "folder", children: [{ id: 7, name: "index.ts", type: "file" }, { id: 8, name: "index.ts", type: "file" }, { id: 9, name: "index.ts", type: "file" }] },
+  {
+    id: 5,
+    name: "Project B",
+    type: "folder",
+    children: [
+      { id: 6, name: "index.ts", type: "file" },
+      { id: 7, name: "index.ts", type: "file" },
+      { id: 8, name: "index.ts", type: "file" },
+    ],
+  },
+  {
+    id: 9,
+    name: "Project C",
+    type: "folder",
+    children: [
+      { id: 10, name: "index.ts", type: "file" },
+      { id: 11, name: "index.ts", type: "file" },
+      {
+        id: 12,
+        name: "index.ts",
+        type: "folder",
+        children: [
+          {
+            id: 13,
+            name: "index.ts",
+            type: "folder",
+            children: [
+              {
+                id: 14,
+                name: "index.ts",
+                type: "folder",
+                children: [{ id: 15, name: "index.ts", type: "file" }],
+              },
+            ],
+          },
+          {
+            id: 16,
+            name: "index.ts",
+            type: "folder",
+            children: [
+              {
+                id: 17,
+                name: "index.ts",
+                type: "folder",
+                children: [{ id: 18, name: "index.ts", type: "file" }],
+              },
+            ],
+          },
+        ],
+      },
+      { id: 11, name: "index.ts", type: "file" },
+    ],
+  },
 ];
 
 export default function ProjectsPage() {
   return (
     <main className="p-8 bg-white min-h-screen">
       <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
-      {treeData.map((node) => (
-        <TreeNode key={node.id} node={node} />
+      {treeData.map((node, index) => (
+        <TreeNode
+          key={node.id}
+          node={node}
+          isLast={index === treeData.length - 1}
+        />
       ))}
     </main>
   );

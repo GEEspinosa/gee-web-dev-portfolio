@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export interface TreeNodeProps {
   node: {
@@ -10,66 +10,90 @@ export interface TreeNodeProps {
   };
   level?: number;
   isLast?: boolean;
-  ancestorsLast?: boolean[]; // new prop to track ancestors' last sibling status
+  ancestorsLast?: boolean[];
 }
 
 const indentPx = 16;
 const arrowWidth = 20;
+const lineLeftOffset = -38;
 
-export default function TreeNode({ node, level = 0, isLast = true, ancestorsLast = [] }: TreeNodeProps) {
+export default function TreeNode({
+  node,
+  level = 0,
+  isLast = true,
+  ancestorsLast = [],
+}: TreeNodeProps) {
   const [isOpen, setIsOpen] = useState(false);
   const isFolder = node.type === "folder";
 
-  // Determine if vertical line should show for children container:
-  // Show if any ancestor is NOT last sibling OR this node itself is NOT last sibling
-  const hasVerticalLine = ancestorsLast.includes(false) || !isLast;
+  const newAncestorsLast = level === 0 ? [] : [...ancestorsLast, isLast];
+  const trunkLeft = level * indentPx + arrowWidth - 12;
+  const hasChildren = isFolder && node.children && node.children.length > 0;
+ 
+  // Ref for children container div
+  const childrenContainerRef = useRef<HTMLDivElement>(null);
+  // State for dynamic height of children container
+  const [childrenHeight, setChildrenHeight] = useState(0);
+  
 
-  // Prepare new ancestorsLast for children: add this node's isLast
-  const newAncestorsLast = [...ancestorsLast, isLast];
+  // Measure the container height on every render when open state or children change
+  useEffect(() => {
+    if (isOpen && childrenContainerRef.current) {
+      const rect = childrenContainerRef.current.getBoundingClientRect();
+      setChildrenHeight(rect.height);
+    } else {
+      setChildrenHeight(0);
+    }
+  }, [isOpen, node.children]);
 
   return (
-    <div>
+    <div style={{ position: "relative" }}>
+      {/* NODE ROW */}
       <div
         className="flex items-center font-mono text-black select-none relative"
         style={{
-          paddingLeft: `${level * indentPx}px`,
+          paddingLeft: `${level * indentPx + 0.25}px`,
           lineHeight: "1.5rem",
           position: "relative",
+          minHeight: "1.5rem",
         }}
       >
+        {/* TOGGLE */}
         {isFolder ? (
           <button
             onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Collapse folder" : "Expand folder"}
-            className="mr-2"
+            className="mr-1"
             style={{
               border: "none",
               background: "none",
               cursor: "pointer",
               fontSize: "1.25rem",
-              lineHeight: "1",
-              transition: "transform 0.2s ease",
+              top: "8",
               transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
               width: arrowWidth,
               display: "inline-flex",
               justifyContent: "center",
+              transition: "transform 0.2s ease",
             }}
+            aria-label={isOpen ? "Collapse folder" : "Expand folder"}
           >
             ▶
           </button>
         ) : (
           <span style={{ display: "inline-block", width: arrowWidth }} />
         )}
+
+        {/* LABEL */}
         <span>{node.name}</span>
 
-        {/* Horizontal line for all siblings */}
+        {/* HORIZONTAL LINE */}
         {level > 0 && (
           <span
             style={{
               position: "absolute",
-              left: level * indentPx + arrowWidth - 50,
-              top: "57.5%",
-              width: 28,
+              left: indentPx * level + arrowWidth / 2 + lineLeftOffset - 16,
+              top: "58%",
+              width: arrowWidth + 11,
               borderBottom: "1px solid black",
               transform: "translateY(-50%)",
               zIndex: 1,
@@ -78,21 +102,38 @@ export default function TreeNode({ node, level = 0, isLast = true, ancestorsLast
         )}
       </div>
 
-      {isFolder && isOpen && node.children && (
+      {/* CHILDREN */}
+      {isFolder && isOpen && hasChildren && (
         <div
+          ref={childrenContainerRef}
           style={{
-            borderLeft: hasVerticalLine ? "1px solid black" : "none",
-            marginLeft: `${level * indentPx + 32}px`,
-            paddingLeft: `${arrowWidth + 8}px`,
+            position: "relative",
+            paddingLeft: indentPx + arrowWidth,
           }}
         >
-          {node.children.map((child, index) => (
+          {/* VERTICAL TRUNK LINE */}
+          {childrenHeight > 0 && (
+            <span
+              style={{
+                position: "absolute",
+                top: 0,
+                left: trunkLeft,
+                width: 1,
+                height: childrenHeight - 10,
+                backgroundColor: "black",
+                zIndex: 0,
+              }}
+            />
+          )}
+
+          {/* CHILD NODES */}
+          {node.children!.map((child, index) => (
             <TreeNode
               key={child.id}
               node={child}
               level={level + 1}
               isLast={index === node.children!.length - 1}
-              ancestorsLast={newAncestorsLast} // pass updated ancestorsLast down
+              ancestorsLast={newAncestorsLast}
             />
           ))}
         </div>
