@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { useColorToggle } from "../context/ColorToggleContext";
 
 export interface TreeNodeProps {
   node: {
@@ -11,6 +12,7 @@ export interface TreeNodeProps {
   level?: number;
   isLast?: boolean;            // is this node the last among its siblings?
   ancestorsLast?: boolean[];   // list tracking which ancestors were last siblings
+  colorToggle?: boolean;
 }
 
 //
@@ -28,7 +30,7 @@ export default function TreeNode({
   isLast = true,
   ancestorsLast = [],
 }: TreeNodeProps) {
-
+  const colorToggle = useColorToggle()
   //
   // FOLDER STATE
   //
@@ -117,7 +119,7 @@ export default function TreeNode({
     // If closed, trunk disappears
     //
     if (!isOpen || !directChildrenRef.current) {
-      setTrunkHeight(0);
+      queueMicrotask(() => setTrunkHeight(0));
       return;
     }
 
@@ -217,7 +219,7 @@ export default function TreeNode({
           style={{
             position: "relative",
             paddingLeft: indentPx + arrowWidth,
-            backgroundColor: "rgba(255, 0, 0, 0.22)", // TEMP visible background for debugging
+            backgroundColor: colorToggle ? "rgba(255, 0, 0, 0.22)" : "transparent" , // TEMP visible background for debugging
           }}
         >
           {/* VERTICAL TRUNK LINE (computed height) */}

@@ -1,90 +1,109 @@
-// import Link from "next/link";
-//import ProjectList from "@/components/ProjectList";
+"use client";
+import { useState } from "react";
 import TreeNode from "@/components/TreeNode";
 import type { TreeNodeProps } from "@/components/TreeNode";
+import ColorToggleContext from "@/context/ColorToggleContext";
+
+let id = 0;
+function idIncrement() {
+  return ++id;
+}
 
 const treeData: TreeNodeProps["node"][] = [
   {
-    id: 1,
+    id: idIncrement(),
     name: "Project A",
     type: "folder",
     children: [
-      { id: 2, name: "README.md", type: "file" },
+      { id: idIncrement(), name: "README.md", type: "file" },
       {
-        id: 3,
+        id: idIncrement(),
         name: "src",
         type: "folder",
-        children: [{ id: 4, name: "index.ts", type: "file" }],
+        children: [{ id: idIncrement(), name: "index.ts", type: "file" }],
       },
     ],
   },
   {
-    id: 5,
+    id: idIncrement(),
     name: "Project B",
     type: "folder",
     children: [
-      { id: 6, name: "index.ts", type: "file" },
-      { id: 7, name: "index.ts", type: "file" },
-      { id: 8, name: "index.ts", type: "file" },
+      { id: idIncrement(), name: "index.ts", type: "file" },
+      { id: idIncrement(), name: "index.ts", type: "file" },
+      { id: idIncrement(), name: "index.ts", type: "file" },
     ],
   },
   {
-    id: 9,
+    id: idIncrement(),
     name: "Project C",
     type: "folder",
     children: [
-      { id: 10, name: "index.ts", type: "file" },
-      { id: 11, name: "index.ts", type: "file" },
+      { id: idIncrement(), name: "index.ts", type: "file" },
+      { id: idIncrement(), name: "index.ts", type: "file" },
       {
-        id: 12,
+        id: idIncrement(),
         name: "index.ts",
         type: "folder",
         children: [
           {
-            id: 13,
+            id: idIncrement(),
             name: "index.ts",
             type: "folder",
             children: [
               {
-                id: 14,
+                id: idIncrement(),
                 name: "index.ts",
                 type: "folder",
-                children: [{ id: 15, name: "index.ts", type: "file" }],
+                children: [
+                  { id: idIncrement(), name: "index.ts", type: "file" },
+                ],
               },
             ],
           },
           {
-            id: 16,
+            id: idIncrement(),
             name: "index.ts",
             type: "folder",
             children: [
               {
-                id: 17,
+                id: idIncrement(),
                 name: "index.ts",
                 type: "folder",
-                children: [{ id: 18, name: "index.ts", type: "file" }],
+                children: [
+                  { id: idIncrement(), name: "index.ts", type: "file" },
+                ],
               },
             ],
           },
         ],
       },
-      { id: 11, name: "index.ts", type: "file" },
+      { id: idIncrement(), name: "index.ts", type: "file" },
     ],
   },
 ];
 
 export default function ProjectsPage() {
+  const [colorToggle, setColorToggle] = useState(true);
+
+  function toggleColorHandler() {
+    setColorToggle((prev) => !prev);
+  }
+
   return (
-    <main className="p-8 bg-white min-h-screen">
-      <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
-      {treeData.map((node, index) => (
-        <TreeNode
-          key={node.id}
-          node={node}
-          isLast={index === treeData.length - 1}
-        />
-      ))}
-    </main>
+    <ColorToggleContext.Provider value={colorToggle}>
+      <main className="p-8 bg-white min-h-screen">
+        <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
+        <button onClick={toggleColorHandler}>color</button>
+        {treeData.map((node, index) => (
+          <TreeNode
+            key={node.id}
+            node={node}
+            isLast={index === treeData.length - 1}
+          />
+        ))}
+      </main>
+    </ColorToggleContext.Provider>
   );
 }
 
@@ -113,4 +132,4 @@ export default function ProjectsPage() {
 //       <p className="text-red-600">Error: {message}</p>;
 //     </main>
 //   );
-// }
+// } 
