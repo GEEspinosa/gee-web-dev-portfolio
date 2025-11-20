@@ -30,7 +30,7 @@ export default function TreeNode({
   isLast = true,
   ancestorsLast = [],
 }: TreeNodeProps) {
-  const { colorToggle, verticalToggle, horizontalToggle } =
+  const { colorToggle, verticalToggle, horizontalToggle, setSelectedNode, selectedNode } =
     useDirectoryToggle();
   //
   // FOLDER STATE
@@ -193,7 +193,20 @@ export default function TreeNode({
         )}
 
         {/* LABEL */}
-        <span>{node.name}</span>
+       
+          <span
+            onClick={
+              node.type === "file" ? () => setSelectedNode(node) : undefined
+            }
+            className={`
+              ${node.type === "file"
+                ? "cursor-pointer hover:underline "
+                : "cursor-default"} ${selectedNode?.id === node.id? " underline" : "" }
+            `}
+          >
+            {node.name}
+          </span>
+       
 
         {/* HORIZONTAL LINE (connects to parent’s vertical trunk) */}
         {horizontalToggle && level > 0 && (

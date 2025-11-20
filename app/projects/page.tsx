@@ -87,6 +87,7 @@ export default function ProjectsPage() {
   const [colorToggle, setColorToggle] = useState(true);
   const [verticalToggle, setVerticalToggle] = useState(true);
   const [horizontalToggle, setHorizontalToggle] = useState(true);
+  const [selectedNode, setSelectedNode] = useState<TreeNodeProps["node"] | null>(null);
 
   function toggleColorHandler() {
     setColorToggle((prev) => !prev);
@@ -102,22 +103,33 @@ export default function ProjectsPage() {
 
   return (
     <DirectoryToggleContext.Provider
-      value={{ colorToggle, verticalToggle, horizontalToggle }}
+      value={{ colorToggle, verticalToggle, horizontalToggle, selectedNode, setSelectedNode }}
     >
-      <main className="p-8 bg-white min-h-screen">
-        <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
-        <div className="flex flex-row space-x-3">
-          <button onClick={toggleColorHandler}>color</button>
-          <button onClick={toggleVerticalHandler}>vertical</button>
-          <button onClick={toggleHorizontalHandler}>horizontal</button>
-        </div>
-        {treeData.map((node, index) => (
-          <TreeNode
-            key={node.id}
-            node={node}
-            isLast={index === treeData.length - 1}
-          />
-        ))}
+      <main className="grid grid-cols-[500px_1fr] h-screen">
+        {/* left sidebar column */}
+        <aside>
+          <div className="p-8 bg-white min-h-screen">
+            <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
+            <div className="flex flex-row space-x-3 mb-4">
+              <button onClick={toggleColorHandler}>color</button>
+              <button onClick={toggleVerticalHandler}>vertical</button>
+              <button onClick={toggleHorizontalHandler}>horizontal</button>
+            </div>
+            {treeData.map((node, index) => (
+              <TreeNode
+                key={node.id}
+                node={node}
+                isLast={index === treeData.length - 1}
+              />
+            ))}
+          </div>
+        </aside>
+        {/* right column content viewer */}
+        <section className="p-8">
+
+        </section>
+
+
       </main>
     </DirectoryToggleContext.Provider>
   );

@@ -1,9 +1,13 @@
 import { createContext, useContext } from "react";
+import { TreeNodeProps } from "@/components/TreeNode";
 
 interface DirectoryToggleContextTypes {
   colorToggle: boolean;
   verticalToggle: boolean;
   horizontalToggle: boolean;
+
+  selectedNode: TreeNodeProps["node"] | null;
+  setSelectedNode: (node: TreeNodeProps["node"]) => void;
 }
 
 //this will be exported by default for the provider/wrapper
