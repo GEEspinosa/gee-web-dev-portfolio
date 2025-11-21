@@ -2,11 +2,14 @@
 import { useState, useRef, useEffect } from "react";
 import { useDirectoryToggle } from "../context/DirectoryToggleContext";
 
+type FileType = 'github-repo' | 'vercel-site' | 'component'  
+
 export interface TreeNodeProps {
   node: {
     id: number;
     name: string;
     type: "file" | "folder";
+    fileType?: FileType
     children?: TreeNodeProps["node"][];
   };
   level?: number;

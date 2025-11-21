@@ -7,7 +7,7 @@ interface DirectoryToggleContextTypes {
   horizontalToggle: boolean;
 
   selectedNode: TreeNodeProps["node"] | null;
-  setSelectedNode: (node: TreeNodeProps["node"]) => void;
+  setSelectedNode: (node: TreeNodeProps["node"] | null) => void;
 }
 
 //this will be exported by default for the provider/wrapper

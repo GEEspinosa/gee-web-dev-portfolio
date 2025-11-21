@@ -3,6 +3,7 @@ import { useState } from "react";
 import TreeNode from "@/components/TreeNode";
 import type { TreeNodeProps } from "@/components/TreeNode";
 import DirectoryToggleContext from "@/context/DirectoryToggleContext";
+import ContentViewer from "../../components/ContentViewer"
 
 let id = 0;
 function idIncrement() {
@@ -87,7 +88,9 @@ export default function ProjectsPage() {
   const [colorToggle, setColorToggle] = useState(true);
   const [verticalToggle, setVerticalToggle] = useState(true);
   const [horizontalToggle, setHorizontalToggle] = useState(true);
-  const [selectedNode, setSelectedNode] = useState<TreeNodeProps["node"] | null>(null);
+  const [selectedNode, setSelectedNode] = useState<
+    TreeNodeProps["node"] | null
+  >(null);
 
   function toggleColorHandler() {
     setColorToggle((prev) => !prev);
@@ -103,7 +106,13 @@ export default function ProjectsPage() {
 
   return (
     <DirectoryToggleContext.Provider
-      value={{ colorToggle, verticalToggle, horizontalToggle, selectedNode, setSelectedNode }}
+      value={{
+        colorToggle,
+        verticalToggle,
+        horizontalToggle,
+        selectedNode,
+        setSelectedNode,
+      }}
     >
       <main className="grid grid-cols-[500px_1fr] h-screen">
         {/* left sidebar column */}
@@ -126,10 +135,8 @@ export default function ProjectsPage() {
         </aside>
         {/* right column content viewer */}
         <section className="p-8">
-
+          <ContentViewer />
         </section>
-
-
       </main>
     </DirectoryToggleContext.Provider>
   );
