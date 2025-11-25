@@ -10,77 +10,125 @@ function idIncrement() {
   return ++id;
 }
 
+// const treeData: TreeNodeProps["node"][] = [
+//   {
+//     id: idIncrement(),
+//     name: "Project A",
+//     type: "folder",
+//     children: [
+//       { id: idIncrement(), name: "README.md", type: "file" },
+//       {
+//         id: idIncrement(),
+//         name: "src",
+//         type: "folder",
+//         children: [{ id: idIncrement(), name: "index.ts", type: "file" }],
+//       },
+//     ],
+//   },
+//   {
+//     id: idIncrement(),
+//     name: "Project B",
+//     type: "folder",
+//     children: [
+//       { id: idIncrement(), name: "index.ts", type: "file" },
+//       { id: idIncrement(), name: "index.ts", type: "file" },
+//       { id: idIncrement(), name: "index.ts", type: "file" },
+//     ],
+//   },
+//   {
+//     id: idIncrement(),
+//     name: "Project C",
+//     type: "folder",
+//     children: [
+//       { id: idIncrement(), name: "index.ts", type: "file" },
+//       { id: idIncrement(), name: "index.ts", type: "file" },
+//       {
+//         id: idIncrement(),
+//         name: "index.ts",
+//         type: "folder",
+//         children: [
+//           {
+//             id: idIncrement(),
+//             name: "index.ts",
+//             type: "folder",
+//             children: [
+//               {
+//                 id: idIncrement(),
+//                 name: "index.ts",
+//                 type: "folder",
+//                 children: [
+//                   { id: idIncrement(), name: "index.ts", type: "file" },
+//                 ],
+//               },
+//             ],
+//           },
+//           {
+//             id: idIncrement(),
+//             name: "index.ts",
+//             type: "folder",
+//             children: [
+//               {
+//                 id: idIncrement(),
+//                 name: "index.ts",
+//                 type: "folder",
+//                 children: [
+//                   { id: idIncrement(), name: "index.ts", type: "file" },
+//                 ],
+//               },
+//             ],
+//           },
+//         ],
+//       },
+//       { id: idIncrement(), name: "index.ts", type: "file" },
+//     ],
+//   },
+// ];
+
 const treeData: TreeNodeProps["node"][] = [
   {
     id: idIncrement(),
-    name: "Project A",
+    name: "Photo Website",
     type: "folder",
     children: [
-      { id: idIncrement(), name: "README.md", type: "file" },
       {
         id: idIncrement(),
-        name: "src",
+        name: "GitHub Repo",
+        type: "file",
+        fileType: "github-repo",
+        url: "https://github.com/GEEspinosa/GEEspinosa-photo-portfolio.git"
+      },
+      {
+        id: idIncrement(),
+        name: "Live Demo",
+        type: "file",
+        fileType: "live-demo",
+        url: "https://ge-espinosa-photo-portfolio.vercel.app"
+      },
+      {
+        id: idIncrement(),
+        name: "README.md",
+        type: "file",
+        fileType: "readme",
+      },
+      {
+        id: idIncrement(),
+        name: "Reusable Components",
         type: "folder",
         children: [{ id: idIncrement(), name: "index.ts", type: "file" }],
-      },
+      },  
     ],
   },
   {
     id: idIncrement(),
-    name: "Project B",
+    name: "War Card Game",
     type: "folder",
-    children: [
-      { id: idIncrement(), name: "index.ts", type: "file" },
-      { id: idIncrement(), name: "index.ts", type: "file" },
-      { id: idIncrement(), name: "index.ts", type: "file" },
-    ],
+    children: [],
   },
   {
     id: idIncrement(),
-    name: "Project C",
+    name: "Developer Website",
     type: "folder",
-    children: [
-      { id: idIncrement(), name: "index.ts", type: "file" },
-      { id: idIncrement(), name: "index.ts", type: "file" },
-      {
-        id: idIncrement(),
-        name: "index.ts",
-        type: "folder",
-        children: [
-          {
-            id: idIncrement(),
-            name: "index.ts",
-            type: "folder",
-            children: [
-              {
-                id: idIncrement(),
-                name: "index.ts",
-                type: "folder",
-                children: [
-                  { id: idIncrement(), name: "index.ts", type: "file" },
-                ],
-              },
-            ],
-          },
-          {
-            id: idIncrement(),
-            name: "index.ts",
-            type: "folder",
-            children: [
-              {
-                id: idIncrement(),
-                name: "index.ts",
-                type: "folder",
-                children: [
-                  { id: idIncrement(), name: "index.ts", type: "file" },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      { id: idIncrement(), name: "index.ts", type: "file" },
-    ],
+    children: [],
   },
 ];
 

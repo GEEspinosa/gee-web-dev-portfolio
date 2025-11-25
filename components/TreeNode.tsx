@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useDirectoryToggle } from "../context/DirectoryToggleContext";
 
-type FileType = 'github-repo' | 'vercel-site' | 'component'  
+type FileType = 'github-repo' | 'live-demo' | 'readme' | 'component'  
 
 export interface TreeNodeProps {
   node: {
