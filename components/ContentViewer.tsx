@@ -1,4 +1,5 @@
 import GitHubRepoView from "./GitHubRepoView";
+import READMEView from "./READMEView";
 
 import { useDirectoryToggle } from "../context/DirectoryToggleContext";
 
@@ -13,6 +14,7 @@ export default function ContentViewer() {
 
   switch (selectedNode.fileType) {
     case "github-repo": return <GitHubRepoView/>
+    case "readme": return <READMEView content={selectedNode.content ?? ""}/>
   
 
   }
