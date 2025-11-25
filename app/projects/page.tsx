@@ -25,8 +25,7 @@ Welcome to my personal portfolio website where I showcase my passion for film ph
 - [Getting Started](#getting-started)  
 - [Deployment](#deployment)  
 - [Live Demo](#live-demo)  
-- [Contact](#contact)  
-- [Acknowledgements](#acknowledgements)  
+- [Contact](#contact)    
 
 ---
 
@@ -36,7 +35,7 @@ This portfolio site was created to share my journey and work in film photography
 
 ---
 
-## Features
+<h2 id="features">Features</h2>
 
 - **Custom Portfolio Site** showcasing 35mm film photography with a simple, elegant design that lets the photos shine.  
 - **Fully Responsive Layout** with two distinct gallery modes:  
@@ -62,7 +61,7 @@ This portfolio site was created to share my journey and work in film photography
 
 ---
 
-## Technologies Used
+<h2 id="technologies-used">Technology Used</h2>
 
 - **React** — for building the user interface  
 - **Styled-Components** — for styling and responsive design  
@@ -70,7 +69,7 @@ This portfolio site was created to share my journey and work in film photography
 
 ---
 
-## Getting Started
+<h2 id="getting-started">Getting Started</h2>
 
 These instructions will help you set up the project locally for development and testing.
 
@@ -125,20 +124,20 @@ yarn build
 
 ---
 
-## Deployment
+<h2 id="deployment">Deployed</h2>
 
 The site is deployed on Vercel. Commits pushed to the main branch will automatically trigger redeployment.
 
 ---
 
-## Live Demo
+<h2 id="live-demo">Live Demo</h2>
 
 Check out the live site here:  
 https://ge-espinosa-photo-portfolio.vercel.app
 
 ---
 
-## Contact
+<h2 id="contact">Contact</h2>
 
 Feel free to reach out for booking inquiries or collaborations:
 

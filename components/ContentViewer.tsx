@@ -15,8 +15,6 @@ export default function ContentViewer() {
   switch (selectedNode.fileType) {
     case "github-repo": return <GitHubRepoView/>
     case "readme": return <READMEView content={selectedNode.content ?? ""}/>
-  
-
   }
 }
 
