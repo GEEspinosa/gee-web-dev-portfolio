@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="flex items-center justify-between p-6 border-b border-gray-200 bg-white ">
       <Link href="/" className="text-2xl font-semibold text-gray-900 ">
-        GE
+        GEE
       </Link>
       <nav className="flex space-x-8 text-gray-700 text-sm font-medium">
         {links.map(({ href, label }) => (

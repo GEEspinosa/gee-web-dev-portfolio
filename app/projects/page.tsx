@@ -306,7 +306,7 @@ export default function ProjectsPage() {
       <main className="grid grid-cols-[500px_1fr] h-screen overflow-hidden">
         {/* left sidebar column */}
         <aside>
-          <div className="p-8 bg-white min-h-screen sticky top-0 h-screen overflow-y-auto">
+          <div className="p-8 bg-white min-h-screen sticky top-0 h-screen overflow-y-auto border-r border-gray-200">
             <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
             <div className="flex flex-row space-x-3 mb-4">
               <button onClick={toggleColorHandler}>color</button>
