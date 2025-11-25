@@ -303,10 +303,10 @@ export default function ProjectsPage() {
         setSelectedNode,
       }}
     >
-      <main className="grid grid-cols-[500px_1fr] ">
+      <main className="grid grid-cols-[500px_1fr] h-screen overflow-hidden">
         {/* left sidebar column */}
         <aside>
-          <div className="p-8 bg-white min-h-screen sticky top-4">
+          <div className="p-8 bg-white min-h-screen sticky top-0 h-screen overflow-y-auto">
             <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
             <div className="flex flex-row space-x-3 mb-4">
               <button onClick={toggleColorHandler}>color</button>
@@ -323,7 +323,7 @@ export default function ProjectsPage() {
           </div>
         </aside>
         {/* right column content viewer */}
-        <section className="p-8">
+        <section className="p-8 flex-1 overflow-y-auto">
           <ContentViewer />
         </section>
       </main>

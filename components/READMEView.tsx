@@ -6,7 +6,7 @@ import rehypeRaw from "rehype-raw";
 
 export default function READMEView ({content}: {content: string}) {
     return (
-    <div className="markdown-content p-6">
+    <div className="markdown-content">
       <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} skipHtml={false}>{content}</ReactMarkdown>
     </div>)
 }
