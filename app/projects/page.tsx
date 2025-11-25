@@ -303,7 +303,7 @@ export default function ProjectsPage() {
         setSelectedNode,
       }}
     >
-      <main className="grid grid-cols-[500px_1fr] h-screen">
+      <main className="grid grid-cols-[500px_1fr] ">
         {/* left sidebar column */}
         <aside>
           <div className="p-8 bg-white min-h-screen">
