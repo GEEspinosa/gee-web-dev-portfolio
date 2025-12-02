@@ -308,7 +308,7 @@ const treeData: TreeNodeProps["node"][] = [
     children: [
       {
         id: idIncrement(),
-        name: "WinterBeast",
+        name: "WinterBeast (2018 - current)",
         type: "folder",
         children: [
           {
@@ -338,16 +338,15 @@ const treeData: TreeNodeProps["node"][] = [
               {
                 id: idIncrement(),
                 name: "40 Miles",
-                fileType: 'album-file',
+                fileType: "album-file",
                 type: "file",
               },
               {
                 id: idIncrement(),
                 name: "A Pale Horse",
-                fileType: 'album-file',
+                fileType: "album-file",
                 type: "file",
               },
-
             ],
           },
           {
@@ -414,14 +413,78 @@ const treeData: TreeNodeProps["node"][] = [
       },
       {
         id: idIncrement(),
-        name: "Pre-WinterBeast",
+        name: "Pre-WinterBeast (2007 - 2019)",
         type: "folder",
         children: [
           {
             id: idIncrement(),
-            name: "Old Town Diamonds",
-            type: "folder",
-            children: [],
+            name: "Kolotov Mocktails: Ivy Hall (2019)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "L'Acephale: Self-Titled (2019)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "Twin Perish: Blue Pour (2018)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "Bulldog Shadow: 24-Hour Drunk (2016)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "Night Surgeon: Gondola Crimewave (2014)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "Night Surgeon: Self-Titled (2013)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "Steelhymen: 0 || 0/0 (2012)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "Night Surgeon: Day For Night (2011)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "Blondie: Panic Of Girls (2011)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "Shalants: Self-Titled (2011)",
+            type: "file",
+          },
+          {
+            id: idIncrement(),
+            name: "Casey Spooner: Adult Contemporary (2011)",
+            type: "file", 
+          },
+          {
+            id: idIncrement(),
+            name: "Fischerspooner: Entertainment (2009)",
+            type: "file",  
+          },
+          {
+            id: idIncrement(),
+            name: "Mobile: Tales From The City (2008)",
+            type: "file",  
+          },
+          {
+            id: idIncrement(),
+            name: "Stab The Matador: Doctor (2007)",
+            type: "file",
           },
         ],
       },
