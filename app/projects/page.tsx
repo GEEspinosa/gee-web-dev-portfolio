@@ -3,7 +3,7 @@ import { useState } from "react";
 import TreeNode from "@/components/TreeNode";
 import type { TreeNodeProps } from "@/components/TreeNode";
 import DirectoryToggleContext from "@/context/DirectoryToggleContext";
-import ContentViewer from "../../components/ContentViewer"
+import ContentViewer from "../../components/ContentViewer";
 
 let id = 0;
 function idIncrement() {
@@ -148,8 +148,6 @@ Feel free to reach out for booking inquiries or collaborations:
 *Thank you for visiting my portfolio!*  
 `;
 
-
-
 // const treeData: TreeNodeProps["node"][] = [
 //   {
 //     id: idIncrement(),
@@ -227,49 +225,207 @@ Feel free to reach out for booking inquiries or collaborations:
 const treeData: TreeNodeProps["node"][] = [
   {
     id: idIncrement(),
-    name: "Photo Website",
+    name: "Creative Technology",
     type: "folder",
     children: [
       {
         id: idIncrement(),
-        name: "GitHub Repo",
-        type: "file",
-        fileType: "github-repo",
-        url: "https://github.com/GEEspinosa/GEEspinosa-photo-portfolio.git"
-      },
-      {
-        id: idIncrement(),
-        name: "Live Demo",
-        type: "file",
-        fileType: "live-demo",
-        url: "https://ge-espinosa-photo-portfolio.vercel.app"
-      },
-      {
-        id: idIncrement(),
-        name: "README.md",
-        type: "file",
-        fileType: "readme",
-        content: photoWebsiteReadme,
-      },
-      {
-        id: idIncrement(),
-        name: "Reusable Components",
+        name: "Convolution Reverb Tool",
         type: "folder",
-        children: [{ id: idIncrement(), name: "index.ts", type: "file" }],
-      },  
+        children: [],
+      },
+      {
+        id: idIncrement(),
+        name: "Acoustic Research",
+        type: "folder",
+        children: [
+          {
+            id: idIncrement(),
+            name: "Impulse Response Library",
+            type: "folder",
+          },
+        ],
+      },
     ],
   },
   {
     id: idIncrement(),
-    name: "War Card Game",
+    name: "Web Development",
     type: "folder",
-    children: [],
+    children: [
+      {
+        id: idIncrement(),
+        name: "Photo Website",
+        type: "folder",
+        children: [
+          {
+            id: idIncrement(),
+            name: "GitHub Repo",
+            type: "file",
+            fileType: "github-repo",
+            url: "https://github.com/GEEspinosa/GEEspinosa-photo-portfolio.git",
+          },
+          {
+            id: idIncrement(),
+            name: "Live Demo",
+            type: "file",
+            fileType: "live-demo",
+            url: "https://ge-espinosa-photo-portfolio.vercel.app",
+          },
+          {
+            id: idIncrement(),
+            name: "README.md",
+            type: "file",
+            fileType: "readme",
+            content: photoWebsiteReadme,
+          },
+          {
+            id: idIncrement(),
+            name: "Reusable Components",
+            type: "folder",
+            children: [{ id: idIncrement(), name: "index.ts", type: "file" }],
+          },
+        ],
+      },
+      {
+        id: idIncrement(),
+        name: "War Card Game",
+        type: "folder",
+        children: [],
+      },
+      {
+        id: idIncrement(),
+        name: "Developer Website",
+        type: "folder",
+        children: [],
+      },
+    ],
   },
   {
     id: idIncrement(),
-    name: "Developer Website",
+    name: "Audio Production",
     type: "folder",
-    children: [],
+    children: [
+      {
+        id: idIncrement(),
+        name: "WinterBeast",
+        type: "folder",
+        children: [
+          {
+            id: idIncrement(),
+            name: "Hail",
+            type: "folder",
+            children: [
+              {
+                id: idIncrement(),
+                name: "Transgression (2024)",
+                fileType: "album-file",
+                type: "file",
+              },
+              {
+                id: idIncrement(),
+                name: "We Are Nothing (2023)",
+                fileType: "album-file",
+                type: "file",
+              },
+            ],
+          },
+          {
+            id: idIncrement(),
+            name: "Old Town Diamonds",
+            type: "folder",
+            children: [
+              {
+                id: idIncrement(),
+                name: "40 Miles",
+                fileType: 'album-file',
+                type: "file",
+              },
+              {
+                id: idIncrement(),
+                name: "A Pale Horse",
+                fileType: 'album-file',
+                type: "file",
+              },
+
+            ],
+          },
+          {
+            id: idIncrement(),
+            name: "Fliege",
+            type: "folder",
+            children: [],
+          },
+          {
+            id: idIncrement(),
+            name: "L'Acephale",
+            type: "folder",
+            children: [],
+          },
+          {
+            id: idIncrement(),
+            name: "Hollow Senses",
+            type: "folder",
+            children: [],
+          },
+          {
+            id: idIncrement(),
+            name: "Mistons",
+            type: "folder",
+            children: [],
+          },
+          {
+            id: idIncrement(),
+            name: "Entrain",
+            type: "folder",
+            children: [],
+          },
+          {
+            id: idIncrement(),
+            name: "Refridgerated Nurses",
+            type: "folder",
+            children: [],
+          },
+          {
+            id: idIncrement(),
+            name: "Ebisu",
+            type: "folder",
+            children: [],
+          },
+          {
+            id: idIncrement(),
+            name: "Twin Perish",
+            type: "folder",
+            children: [],
+          },
+          {
+            id: idIncrement(),
+            name: "Notnauts",
+            type: "folder",
+            children: [],
+          },
+          {
+            id: idIncrement(),
+            name: "Hellcows",
+            type: "folder",
+            children: [],
+          },
+        ],
+      },
+      {
+        id: idIncrement(),
+        name: "Pre-WinterBeast",
+        type: "folder",
+        children: [
+          {
+            id: idIncrement(),
+            name: "Old Town Diamonds",
+            type: "folder",
+            children: [],
+          },
+        ],
+      },
+    ],
   },
 ];
 

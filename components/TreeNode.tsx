@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useDirectoryToggle } from "../context/DirectoryToggleContext";
 
-type FileType = 'github-repo' | 'live-demo' | 'readme' | 'component'  
+type FileType = 'github-repo' | 'live-demo' | 'readme' | 'component' | 'album-file'  
 
 export interface TreeNodeProps {
   node: {
