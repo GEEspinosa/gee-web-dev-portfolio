@@ -189,7 +189,7 @@ const treeData: TreeNodeProps["node"][] = [
             name: "GitHub Repo",
             type: "file",
             fileType: "github-repo",
-            url: "https://api.github.com/repos/GEEspinosa/gee-web-dev-portfolio",
+            url: "https://api.github.com/repos/GEEspinosa/GEEspinosa-photo-portfolio",
           },
           {
             id: idIncrement(),
