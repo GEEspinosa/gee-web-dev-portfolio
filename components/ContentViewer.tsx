@@ -1,5 +1,6 @@
 import GitHubRepoView from "./GitHubRepoView";
 import READMEView from "./READMEView";
+import LiveDemoView from "./LiveDemoView";
 
 import { useDirectoryToggle } from "../context/DirectoryToggleContext";
 
@@ -13,15 +14,11 @@ export default function ContentViewer() {
   }
 
   switch (selectedNode.fileType) {
-    case "github-repo": return <GitHubRepoView/>
+    case "github-repo": return <GitHubRepoView repoURL={selectedNode.url!}/>
     case "readme": return <READMEView content={selectedNode.content ?? ""}/>
+     case "live-demo": return <LiveDemoView demoURL={selectedNode.url!}/>
   }
 }
 
 
-//within code block
-//1) safety check if selected node isn't anything or if its type is a folder
-// then return a string to render instructions to user
 
-//2) create a switch from all fileType values
-// each case will start with name as a string : return a component with the selectedNode sent to it in props

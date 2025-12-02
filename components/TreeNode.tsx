@@ -12,7 +12,7 @@ export interface TreeNodeProps {
     fileType?: FileType
     children?: TreeNodeProps["node"][];
     content?: string,
-    url?: string
+    url?: string,
   };
   level?: number;
   isLast?: boolean; // is this node the last among its siblings?
