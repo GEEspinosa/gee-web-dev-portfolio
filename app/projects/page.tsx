@@ -211,7 +211,29 @@ const treeData: TreeNodeProps["node"][] = [
         id: idIncrement(),
         name: "War Card Game",
         type: "folder",
-        children: [],
+        children: [
+          {
+            id: idIncrement(),
+            name: "GitHub Repo",
+            type: "file",
+            fileType: "github-repo",
+            url: "https://api.github.com/repos/GEEspinosa/card-test-project",
+          },
+          {
+            id: idIncrement(),
+            name: "Live Demo",
+            type: "file",
+            fileType: "live-demo",
+            url: "https://card-test-project.vercel.app",
+          },
+          {
+            id: idIncrement(),
+            name: "README.md",
+            type: "file",
+            fileType: "readme",
+            content: photoWebsiteReadme,
+          },
+        ],
       },
       {
         id: idIncrement(),
