@@ -5,8 +5,6 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import DirectoryToggleContext from "@/context/DirectoryToggleContext";
-import { TreeNodeProps } from "@/components/TreeNode";
 import { ClientProvider } from "@/context/ClientProvider";
 
 const geistSans = Geist({

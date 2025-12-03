@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -38,9 +45,20 @@ body {
   vertical-align: middle;
 }
 
+/* Existing hover effect */
 .group:hover .arrow-rotate-left {
-  transform: rotate(-180deg) translateY(.4px);
+  transform: rotate(-180deg) translateY(0.4px);
 }
+
+/* Active state (link is current page) - keep arrow rotated */
+/* .group.active .arrow-rotate-left {
+  transform: rotate(-180deg) translateY(0.4px);
+} */
+
+/* Optional: keep arrow rotated on hover even if active (to ensure no flicker) */
+/* .group.active:hover .arrow-rotate-left {
+  transform: rotate(-180deg) translateY(0.4px);
+} */
 
 .markdown-content h1 {
   font-size: 2rem;
