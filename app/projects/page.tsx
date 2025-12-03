@@ -4,6 +4,7 @@ import TreeNode from "@/components/TreeNode";
 import type { TreeNodeProps } from "@/components/TreeNode";
 import DirectoryToggleContext from "@/context/DirectoryToggleContext";
 import ContentViewer from "../../components/ContentViewer";
+import ColorPicker from "@/components/ColorPicker";
 
 let id = 0;
 function idIncrement() {
@@ -436,6 +437,7 @@ const treeData: TreeNodeProps["node"][] = [
 
 export default function ProjectsPage() {
   const [colorToggle, setColorToggle] = useState(true);
+  const [highlightColor, setHighlightColor] = useState("rgba(255, 0, 0, 0.22)");
   const [verticalToggle, setVerticalToggle] = useState(true);
   const [horizontalToggle, setHorizontalToggle] = useState(true);
   const [selectedNode, setSelectedNode] = useState<
@@ -458,6 +460,8 @@ export default function ProjectsPage() {
     <DirectoryToggleContext.Provider
       value={{
         colorToggle,
+        highlightColor,
+        setHighlightColor,
         verticalToggle,
         horizontalToggle,
         selectedNode,
@@ -469,8 +473,9 @@ export default function ProjectsPage() {
         <aside>
           <div className="p-8 bg-white min-h-screen sticky top-0 h-screen overflow-y-auto border-r border-gray-200">
             <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
-            <div className="flex flex-row space-x-3 mb-4">
+            <div className="flex flex-row items-center space-x-3 mb-4">
               <button onClick={toggleColorHandler}>color</button>
+              <ColorPicker value={highlightColor} onChange={setHighlightColor}/>
               <button onClick={toggleVerticalHandler}>vertical</button>
               <button onClick={toggleHorizontalHandler}>horizontal</button>
             </div>

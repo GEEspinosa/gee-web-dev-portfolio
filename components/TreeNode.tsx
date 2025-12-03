@@ -35,7 +35,7 @@ export default function TreeNode({
   isLast = true,
   ancestorsLast = [],
 }: TreeNodeProps) {
-  const { colorToggle, verticalToggle, horizontalToggle, setSelectedNode, selectedNode } =
+  const { colorToggle, highlightColor, verticalToggle, horizontalToggle, setSelectedNode, selectedNode } =
     useDirectoryToggle();
   //
   // FOLDER STATE
@@ -237,8 +237,8 @@ export default function TreeNode({
           style={{
             position: "relative",
             paddingLeft: indentPx + arrowWidth,
-            backgroundColor: colorToggle
-              ? "rgba(255, 0, 0, 0.22)"
+            backgroundColor: colorToggle 
+              ? highlightColor
               : "transparent", // TEMP visible background for debugging
           }}
         >
@@ -276,3 +276,7 @@ export default function TreeNode({
     </div>
   );
 }
+
+
+
+// "rgba(255, 0, 0, 0.22)"

@@ -3,6 +3,11 @@ import { TreeNodeProps } from "@/components/TreeNode";
 
 interface DirectoryToggleContextTypes {
   colorToggle: boolean;
+ 
+  highlightColor: string;
+  setHighlightColor: (color: string) => void;
+
+
   verticalToggle: boolean;
   horizontalToggle: boolean;
 
