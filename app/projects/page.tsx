@@ -448,13 +448,13 @@ const treeData: TreeNodeProps["node"][] = [
               {
                 id: idIncrement(),
                 name: "Transgression (2024)",
-                fileType: "album-file",
+                fileType: "wb-album",
                 type: "file",
               },
               {
                 id: idIncrement(),
                 name: "We Are Nothing (2023)",
-                fileType: "album-file",
+                fileType: "wb-album",
                 type: "file",
               },
             ],
@@ -467,13 +467,13 @@ const treeData: TreeNodeProps["node"][] = [
               {
                 id: idIncrement(),
                 name: "40 Miles (2024)",
-                fileType: "album-file",
+                fileType: "wb-album",
                 type: "file",
               },
               {
                 id: idIncrement(),
                 name: "A Pale Horse (2023)",
-                fileType: "album-file",
+                fileType: "wb-album",
                 type: "file",
               },
             ],
@@ -481,13 +481,13 @@ const treeData: TreeNodeProps["node"][] = [
           {
             id: idIncrement(),
             name: "Hollow Senses - Taurobolium (2023)",
-            fileType: "album-file",
+            fileType: "wb-album",
             type: "file",
           },
           {
             id: idIncrement(),
             name: "Fliege - The Invisible Seam (2020)",
-            fileType: "album-file",
+            fileType: "wb-album",
             type: "file",
           },
           // {
@@ -563,71 +563,85 @@ const treeData: TreeNodeProps["node"][] = [
             id: idIncrement(),
             name: "Kolotov Mocktails: Ivy Hall (2019)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "L'Acephale: Self-Titled (2019)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Twin Perish: Blue Pour (2018)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Bulldog Shadow: 24-Hour Drunk (2016)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Night Surgeon: Gondola Crimewave (2014)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Night Surgeon: Self-Titled (2013)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Steelhymen: 0 || 0/0 (2012)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Night Surgeon: Day For Night (2011)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Blondie: Panic Of Girls (2011)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Shalants: Self-Titled (2011)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Casey Spooner: Adult Contemporary (2011)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Fischerspooner: Entertainment (2009)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Mobile: Tales From The City (2008)",
             type: "file",
+            fileType: "pre-wb-album",
           },
           {
             id: idIncrement(),
             name: "Stab The Matador: Doctor (2007)",
             type: "file",
+            fileType: "pre-wb-album",
           },
         ],
       },
@@ -687,16 +701,16 @@ export default function ProjectsPage() {
   }, []);
 
   const {
-    colorToggle,
+    // colorToggle,
     setColorToggle,
     highlightColor,
     setHighlightColor,
-    verticalToggle,
+    // verticalToggle,
     setVerticalToggle,
-    horizontalToggle,
+    // horizontalToggle,
     setHorizontalToggle,
-    selectedNode,
-    setSelectedNode,
+    // selectedNode,
+    // setSelectedNode,
   } = useDirectoryToggle();
 
   function toggleColorHandler() {

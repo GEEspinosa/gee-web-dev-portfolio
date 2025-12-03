@@ -7,7 +7,8 @@ type FileType =
   | "live-demo"
   | "readme"
   | "component"
-  | "album-file";
+  | "wb-album"
+  | "pre-wb-album";
 
 export interface TreeNodeProps {
   node: {
