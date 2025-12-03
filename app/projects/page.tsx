@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+
 import TreeNode from "@/components/TreeNode";
 import type { TreeNodeProps } from "@/components/TreeNode";
-import DirectoryToggleContext from "@/context/DirectoryToggleContext";
+import { useDirectoryToggle } from "@/context/DirectoryToggleContext";
 import ContentViewer from "../../components/ContentViewer";
 import ColorPicker from "@/components/ColorPicker";
 
@@ -436,13 +436,19 @@ const treeData: TreeNodeProps["node"][] = [
 ];
 
 export default function ProjectsPage() {
-  const [colorToggle, setColorToggle] = useState(true);
-  const [highlightColor, setHighlightColor] = useState("rgba(255, 0, 0, 0.22)");
-  const [verticalToggle, setVerticalToggle] = useState(true);
-  const [horizontalToggle, setHorizontalToggle] = useState(true);
-  const [selectedNode, setSelectedNode] = useState<
-    TreeNodeProps["node"] | null
-  >(null);
+
+  const {
+    colorToggle,
+    setColorToggle,
+    highlightColor,
+    setHighlightColor,
+    verticalToggle,
+    setVerticalToggle,
+    horizontalToggle,
+    setHorizontalToggle,
+    selectedNode,
+    setSelectedNode,
+  } = useDirectoryToggle();
 
   function toggleColorHandler() {
     setColorToggle((prev) => !prev);
@@ -457,17 +463,7 @@ export default function ProjectsPage() {
   }
 
   return (
-    <DirectoryToggleContext.Provider
-      value={{
-        colorToggle,
-        highlightColor,
-        setHighlightColor,
-        verticalToggle,
-        horizontalToggle,
-        selectedNode,
-        setSelectedNode,
-      }}
-    >
+   
       <main className="grid grid-cols-[500px_1fr] h-screen overflow-hidden">
         {/* left sidebar column */}
         <aside>
@@ -493,7 +489,7 @@ export default function ProjectsPage() {
           <ContentViewer />
         </section>
       </main>
-    </DirectoryToggleContext.Provider>
+
   );
 }
 

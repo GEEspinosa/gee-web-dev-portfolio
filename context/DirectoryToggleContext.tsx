@@ -3,16 +3,20 @@ import { TreeNodeProps } from "@/components/TreeNode";
 
 interface DirectoryToggleContextTypes {
   colorToggle: boolean;
+  setColorToggle: React.Dispatch<React.SetStateAction<boolean>> ;
  
   highlightColor: string;
-  setHighlightColor: (color: string) => void;
+  setHighlightColor: React.Dispatch<React.SetStateAction<string>>;
 
 
   verticalToggle: boolean;
+  setVerticalToggle: React.Dispatch<React.SetStateAction<boolean>>;
+
   horizontalToggle: boolean;
+  setHorizontalToggle: React.Dispatch<React.SetStateAction<boolean>>;
 
   selectedNode: TreeNodeProps["node"] | null;
-  setSelectedNode: (node: TreeNodeProps["node"] | null) => void;
+  setSelectedNode: React.Dispatch<React.SetStateAction<TreeNodeProps["node"] | null>>;
 }
 
 //this will be exported by default for the provider/wrapper
