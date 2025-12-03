@@ -1,6 +1,6 @@
 "use client";
 
-import {useState, useRef, useEffect} from "react";
+import { useState, useRef, useEffect } from "react";
 
 import TreeNode from "@/components/TreeNode";
 import type { TreeNodeProps } from "@/components/TreeNode";
@@ -439,6 +439,12 @@ const treeData: TreeNodeProps["node"][] = [
             name: "Hail",
             type: "folder",
             children: [
+              // {
+              //   id: idIncrement(),
+              //   name: "Child Of A Cursed Temple (unreleased)",
+              //   fileType: "album-file",
+              //   type: "file",
+              // },
               {
                 id: idIncrement(),
                 name: "Transgression (2024)",
@@ -460,13 +466,13 @@ const treeData: TreeNodeProps["node"][] = [
             children: [
               {
                 id: idIncrement(),
-                name: "40 Miles",
+                name: "40 Miles (2024)",
                 fileType: "album-file",
                 type: "file",
               },
               {
                 id: idIncrement(),
-                name: "A Pale Horse",
+                name: "A Pale Horse (2023)",
                 fileType: "album-file",
                 type: "file",
               },
@@ -474,64 +480,78 @@ const treeData: TreeNodeProps["node"][] = [
           },
           {
             id: idIncrement(),
-            name: "Fliege",
-            type: "folder",
-            children: [],
+            name: "Hollow Senses - Taurobolium (2023)",
+            fileType: "album-file",
+            type: "file",
           },
           {
             id: idIncrement(),
-            name: "L'Acephale",
-            type: "folder",
-            children: [],
+            name: "Fliege - The Invisible Seam (2020)",
+            fileType: "album-file",
+            type: "file",
           },
-          {
-            id: idIncrement(),
-            name: "Hollow Senses",
-            type: "folder",
-            children: [],
-          },
-          {
-            id: idIncrement(),
-            name: "Mistons",
-            type: "folder",
-            children: [],
-          },
-          {
-            id: idIncrement(),
-            name: "Entrain",
-            type: "folder",
-            children: [],
-          },
-          {
-            id: idIncrement(),
-            name: "Refridgerated Nurses",
-            type: "folder",
-            children: [],
-          },
-          {
-            id: idIncrement(),
-            name: "Ebisu",
-            type: "folder",
-            children: [],
-          },
-          {
-            id: idIncrement(),
-            name: "Twin Perish",
-            type: "folder",
-            children: [],
-          },
-          {
-            id: idIncrement(),
-            name: "Notnauts",
-            type: "folder",
-            children: [],
-          },
-          {
-            id: idIncrement(),
-            name: "Hellcows",
-            type: "folder",
-            children: [],
-          },
+          // {
+          //   id: idIncrement(),
+          //   name: "L'Acephale",
+          //   type: "folder",
+          //   children: [
+          //     {
+          //       id: idIncrement(),
+          //       name: "Unnamed LP (WIP)",
+          //       fileType: "album-file",
+          //       type: "file",
+          //     },
+          //     {
+          //       id: idIncrement(),
+          //       name: "Unnamed EP (WIP)",
+          //       fileType: "album-file",
+          //       type: "file",
+          //     },
+          //   ],
+          // },
+          
+          // {
+          //   id: idIncrement(),
+          //   name: "Mistons",
+          //   type: "folder",
+          //   children: [],
+          // },
+          // {
+          //   id: idIncrement(),
+          //   name: "Entrain",
+          //   type: "folder",
+          //   children: [],
+          // },
+          // {
+          //   id: idIncrement(),
+          //   name: "Refrigerated Nurses - Unnamed LP",
+          //   fileType: "album-file",
+          //   type: "file",
+          // },
+          // {
+          //   id: idIncrement(),
+          //   name: "Ebisu",
+          //   type: "folder",
+          //   children: [],
+          // },
+          // {
+          //   id: idIncrement(),
+          //   name: "Twin Perish",
+          //   type: "folder",
+          //   children: [],
+          // },
+          // {
+          //   id: idIncrement(),
+          //   name: "Notnauts - Unnamed LP (unreleased)",
+          //   fileType: "album-file",
+          //   type: "file",
+          // },
+          // {
+          //   id: idIncrement(),
+          //   name: "Hellcows - Singles (unreleased)",
+          //   fileType: "album-file",
+          //   type: "file",
+          // },
         ],
       },
       {
@@ -592,17 +612,17 @@ const treeData: TreeNodeProps["node"][] = [
           {
             id: idIncrement(),
             name: "Casey Spooner: Adult Contemporary (2011)",
-            type: "file", 
+            type: "file",
           },
           {
             id: idIncrement(),
             name: "Fischerspooner: Entertainment (2009)",
-            type: "file",  
+            type: "file",
           },
           {
             id: idIncrement(),
             name: "Mobile: Tales From The City (2008)",
-            type: "file",  
+            type: "file",
           },
           {
             id: idIncrement(),
@@ -616,12 +636,10 @@ const treeData: TreeNodeProps["node"][] = [
 ];
 
 export default function ProjectsPage() {
-
-  const [sidebarWidth, setSidebarWidth] = useState (500);
+  const [sidebarWidth, setSidebarWidth] = useState(500);
   const resizerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isResizing = useRef(false);
-
 
   useEffect(() => {
     function handleMouseMove(e: MouseEvent) {
@@ -694,54 +712,54 @@ export default function ProjectsPage() {
   }
 
   return (
-   
-      <main ref={containerRef} className="flex h-screen overflow-hidden select-none">
-       
-        {/* left sidebar column */}
-        <aside
-        style={{width: sidebarWidth, }}
+    <main
+      ref={containerRef}
+      className="flex h-screen overflow-hidden select-none"
+    >
+      {/* left sidebar column */}
+      <aside
+        style={{ width: sidebarWidth }}
         className="p-8 bg-white min-h-screen sticky top-0 h-screen overflow-y-auto border-r border-gray-200 flex-shrink-0"
-        >
-          
-            <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
-            <div className="flex flex-row items-center space-x-3 mb-4">
-              <button onClick={toggleColorHandler}>color</button>
-              <ColorPicker value={highlightColor} onChange={setHighlightColor}/>
-              <button onClick={toggleVerticalHandler}>vertical</button>
-              <button onClick={toggleHorizontalHandler}>horizontal</button>
-            </div>
-            <div style={{paddingLeft: 2, overflowY: "auto", overflowX: "auto",  minWidth: 0,}}>
-            {treeData.map((node, index) => (
-              <TreeNode
-                key={node.id}
-                node={node}
-                isLast={index === treeData.length - 1}
-              />
-            ))}
+      >
+        <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
+        <div className="flex flex-row items-center space-x-3 mb-4">
+          <button onClick={toggleColorHandler}>color</button>
+          <ColorPicker value={highlightColor} onChange={setHighlightColor} />
+          <button onClick={toggleVerticalHandler}>vertical</button>
+          <button onClick={toggleHorizontalHandler}>horizontal</button>
         </div>
-        </aside>
+        <div
+          style={{
+            paddingLeft: 2,
+            overflowY: "auto",
+            overflowX: "auto",
+            minWidth: 0,
+          }}
+        >
+          {treeData.map((node, index) => (
+            <TreeNode
+              key={node.id}
+              node={node}
+              isLast={index === treeData.length - 1}
+            />
+          ))}
+        </div>
+      </aside>
 
-        {/* Resizer bar */}
+      {/* Resizer bar */}
       <div
         ref={resizerRef}
         className="w-1 cursor-col-resize hover:bg-gray-400"
         style={{ userSelect: "none" }}
       />
 
-
-        {/* right column content viewer */}
-        <section className="p-8 flex-1 overflow-y-auto">
-          <ContentViewer />
-        </section>
-      </main>
-
+      {/* right column content viewer */}
+      <section className="p-8 flex-1 overflow-y-auto">
+        <ContentViewer />
+      </section>
+    </main>
   );
 }
-
-
-
-
-
 
 // <main className="grid grid-cols-[500px_1fr] h-screen overflow-hidden">
 //         left sidebar column
