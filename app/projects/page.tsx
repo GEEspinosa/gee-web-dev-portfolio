@@ -532,7 +532,7 @@ export default function ProjectsPage() {
               <button onClick={toggleVerticalHandler}>vertical</button>
               <button onClick={toggleHorizontalHandler}>horizontal</button>
             </div>
-            <div style={{overflowY: "auto", overflowX: "auto",  minWidth: 0,}}>
+            <div style={{paddingLeft: 2, overflowY: "auto", overflowX: "auto",  minWidth: 0,}}>
             {treeData.map((node, index) => (
               <TreeNode
                 key={node.id}

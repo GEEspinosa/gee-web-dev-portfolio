@@ -193,7 +193,7 @@ export default function TreeNode({
               background: "none",
               cursor: "pointer",
               fontSize: "1.25rem",
-              marginRight: 5,
+              marginRight: 5.5,
               // paddingRight: 5,
               // width: arrowWidth,
               display: "inline-flex",
@@ -242,7 +242,7 @@ export default function TreeNode({
             <span
               style={{
                 position: "absolute",
-                left: indentPx * level + arrowWidth / 2 + lineLeftOffset - 20,
+                left: indentPx * level + arrowWidth / 2 + lineLeftOffset - 20.4,
                 top: "58%",
                 width: arrowWidth + 16,
                 borderBottom: "1px solid black",
@@ -271,7 +271,7 @@ export default function TreeNode({
               style={{
                 position: "absolute",
                 top: 0,
-                left: trunkLeft - 3.8,
+                left: trunkLeft - 4.5,
                 width: 1,
                 height: trunkHeight,
                 backgroundColor: "black",
