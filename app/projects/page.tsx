@@ -518,6 +518,7 @@ export default function ProjectsPage() {
   return (
    
       <main ref={containerRef} className="flex h-screen overflow-hidden select-none">
+       
         {/* left sidebar column */}
         <aside
         style={{width: sidebarWidth, }}
@@ -531,6 +532,7 @@ export default function ProjectsPage() {
               <button onClick={toggleVerticalHandler}>vertical</button>
               <button onClick={toggleHorizontalHandler}>horizontal</button>
             </div>
+            <div style={{overflowY: "auto", overflowX: "auto",  minWidth: 0,}}>
             {treeData.map((node, index) => (
               <TreeNode
                 key={node.id}
@@ -538,7 +540,7 @@ export default function ProjectsPage() {
                 isLast={index === treeData.length - 1}
               />
             ))}
-        
+        </div>
         </aside>
 
         {/* Resizer bar */}

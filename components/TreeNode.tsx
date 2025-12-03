@@ -2,17 +2,22 @@
 import { useState, useRef, useEffect } from "react";
 import { useDirectoryToggle } from "../context/DirectoryToggleContext";
 
-type FileType = 'github-repo' | 'live-demo' | 'readme' | 'component' | 'album-file'  
+type FileType =
+  | "github-repo"
+  | "live-demo"
+  | "readme"
+  | "component"
+  | "album-file";
 
 export interface TreeNodeProps {
   node: {
     id: number;
     name: string;
     type: "file" | "folder";
-    fileType?: FileType
+    fileType?: FileType;
     children?: TreeNodeProps["node"][];
-    content?: string,
-    url?: string,
+    content?: string;
+    url?: string;
   };
   level?: number;
   isLast?: boolean; // is this node the last among its siblings?
@@ -35,8 +40,14 @@ export default function TreeNode({
   isLast = true,
   ancestorsLast = [],
 }: TreeNodeProps) {
-  const { colorToggle, highlightColor, verticalToggle, horizontalToggle, setSelectedNode, selectedNode } =
-    useDirectoryToggle();
+  const {
+    colorToggle,
+    highlightColor,
+    verticalToggle,
+    horizontalToggle,
+    setSelectedNode,
+    selectedNode,
+  } = useDirectoryToggle();
   //
   // FOLDER STATE
   //
@@ -182,7 +193,9 @@ export default function TreeNode({
               background: "none",
               cursor: "pointer",
               fontSize: "1.25rem",
-              width: arrowWidth,
+              marginRight: 5,
+              // paddingRight: 5,
+              // width: arrowWidth,
               display: "inline-flex",
               justifyContent: "center",
               transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
@@ -193,40 +206,52 @@ export default function TreeNode({
             ▶
           </button>
         ) : (
-          // Placeholder: ensures file nodes align with folder nodes
-          <span style={{ width: arrowWidth, display: "inline-block" }} />
+          // Placeholder: ensures file nodes align with folder nodes, removed from styles width: arrowWidth
+          <span style={{ display: "inline-block" }} />
         )}
 
-        {/* LABEL */}
-       
+        <div style={{display: "flex", alignItems: "center", flexGrow: 1, minWidth: 0}}>
+          {/* LABEL */}
+
           <span
             onClick={
               node.type === "file" ? () => setSelectedNode(node) : undefined
             }
             className={`
-              ${node.type === "file"
-                ? "cursor-pointer hover:underline "
-                : "cursor-default"} ${selectedNode?.id === node.id? " underline" : "" }
+              ${
+                node.type === "file"
+                  ? "cursor-pointer hover:underline "
+                  : "cursor-default"
+              } ${selectedNode?.id === node.id ? " underline" : ""}
             `}
+            style={{
+              whiteSpace: "nowrap", // prevent wrapping
+              overflow: "hidden", // clip overflow
+              textOverflow: "ellipsis", // show ellipsis if clipped
+              flexGrow: 1,
+              minWidth: 0,
+              display: "inline-block", // needed for text-overflow to work
+            }}
           >
             {node.name}
           </span>
-       
 
-        {/* HORIZONTAL LINE (connects to parent’s vertical trunk) */}
-        {horizontalToggle && level > 0 && (
-          <span
-            style={{
-              position: "absolute",
-              left: indentPx * level + arrowWidth / 2 + lineLeftOffset - 16,
-              top: "58%",
-              width: arrowWidth + 11,
-              borderBottom: "1px solid black",
-              transform: "translateY(-50%)",
-              zIndex: 2,
-            }}
-          />
-        )}
+          {/* HORIZONTAL LINE (connects to parent’s vertical trunk) */}
+
+          {horizontalToggle && level > 0 && (
+            <span
+              style={{
+                position: "absolute",
+                left: indentPx * level + arrowWidth / 2 + lineLeftOffset - 20,
+                top: "58%",
+                width: arrowWidth + 16,
+                borderBottom: "1px solid black",
+                transform: "translateY(-50%)",
+                zIndex: 2,
+              }}
+            />
+          )}
+        </div>
       </div>
 
       {/* ─────────────────────────────
@@ -237,9 +262,7 @@ export default function TreeNode({
           style={{
             position: "relative",
             paddingLeft: indentPx + arrowWidth,
-            backgroundColor: colorToggle 
-              ? highlightColor
-              : "transparent", // TEMP visible background for debugging
+            backgroundColor: colorToggle ? highlightColor : "transparent", // TEMP visible background for debugging
           }}
         >
           {/* VERTICAL TRUNK LINE (computed height) */}
@@ -248,7 +271,7 @@ export default function TreeNode({
               style={{
                 position: "absolute",
                 top: 0,
-                left: trunkLeft,
+                left: trunkLeft - 3.8,
                 width: 1,
                 height: trunkHeight,
                 backgroundColor: "black",
@@ -278,5 +301,3 @@ export default function TreeNode({
 }
 
 
-
-// "rgba(255, 0, 0, 0.22)"
