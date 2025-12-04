@@ -7,9 +7,12 @@ import { useDirectoryToggle } from "@/context/DirectoryToggleContext";
 import ContentViewer from "../../components/ContentViewer";
 import ColorPicker from "@/components/ColorPicker";
 import { treeData } from "@/lib/treeData";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ProjectsPage() {
+  const [sidebarCollapse, setSidebarCollapse] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(500);
+  const [resizing, setResizing] = useState(false);
   const resizerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isResizing = useRef(false);
@@ -31,12 +34,14 @@ export default function ProjectsPage() {
 
     function handleMouseUp() {
       isResizing.current = false;
+      setResizing(false);
       document.body.style.pointerEvents = "auto";
       document.body.style.cursor = "auto";
     }
 
     function handleMouseDown() {
       isResizing.current = true;
+      setResizing(true);
       document.body.style.pointerEvents = "none";
       document.body.style.cursor = "col-resize";
     }
@@ -91,32 +96,69 @@ export default function ProjectsPage() {
     >
       {/* left sidebar column */}
       <aside
-        style={{ width: sidebarWidth }}
+        style={{
+          width: sidebarCollapse ? 48 : sidebarWidth,
+          transition: !resizing ? "width 0.25s ease" : "none",
+          overflow: "hidden",
+          // Optional: reduce right padding when expanded to let button move closer
+          paddingRight: sidebarCollapse ? "2rem" : "1rem",
+        }}
         className="p-8 bg-white min-h-screen sticky top-0 h-screen overflow-y-auto border-r border-gray-200 flex-shrink-0"
       >
-        <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
-        <div className="flex flex-row items-center space-x-3 mb-4">
-          <button onClick={toggleColorHandler}>color</button>
-          <ColorPicker value={highlightColor} onChange={setHighlightColor} />
-          <button onClick={toggleVerticalHandler}>vertical</button>
-          <button onClick={toggleHorizontalHandler}>horizontal</button>
-        </div>
         <div
-          style={{
-            paddingLeft: 2,
-            overflowY: "auto",
-            overflowX: "auto",
-            minWidth: 0,
-          }}
+          className={`flex items-center mb-4 ${
+            sidebarCollapse ? "justify-center" : "justify-between"
+          } h-10`}
         >
-          {treeData.map((node, index) => (
-            <TreeNode
-              key={node.id}
-              node={node}
-              isLast={index === treeData.length - 1}
-            />
-          ))}
+          {!sidebarCollapse && (
+            <h1 className="font-mono text-xl" style={{textOverflow: "ellipsis", whiteSpace: "nowrap",}}>Projects Directory</h1>
+          )}
+
+          <button
+            onClick={() => setSidebarCollapse((prev) => !prev)}
+            className={`h-8 w-8 min-w-[2rem] flex items-center justify-center rounded ${
+              sidebarCollapse
+                ? "bg-gray-800 hover:bg-gray-400"
+                : "hover:bg-gray-200 " // negative margin-right only when expanded
+            } text-sm`}
+          >
+            {sidebarCollapse ? (
+              <ChevronRight size={24} color={"white"} />
+            ) : (
+              <ChevronLeft size={24} color={"black"} />
+            )}
+          </button>
         </div>
+
+        {!sidebarCollapse && (
+          <>
+            <div className="flex flex-row items-center space-x-3 mb-4">
+              <button onClick={toggleColorHandler}>color</button>
+              <ColorPicker
+                value={highlightColor}
+                onChange={setHighlightColor}
+              />
+              <button onClick={toggleVerticalHandler}>vertical</button>
+              <button onClick={toggleHorizontalHandler}>horizontal</button>
+            </div>
+            <div
+              style={{
+                paddingLeft: 2,
+                overflowY: "auto",
+                overflowX: "auto",
+                minWidth: 0,
+              }}
+            >
+              {treeData.map((node, index) => (
+                <TreeNode
+                  key={node.id}
+                  node={node}
+                  isLast={index === treeData.length - 1}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </aside>
 
       {/* Resizer bar */}
@@ -133,29 +175,3 @@ export default function ProjectsPage() {
     </main>
   );
 }
-
-// <main className="grid grid-cols-[500px_1fr] h-screen overflow-hidden">
-//         left sidebar column
-//         <aside>
-//           <div className="p-8 bg-white min-h-screen sticky top-0 h-screen overflow-y-auto border-r border-gray-200">
-//             <h1 className="font-mono text-xl mb-4">Projects Directory</h1>
-//             <div className="flex flex-row items-center space-x-3 mb-4">
-//               <button onClick={toggleColorHandler}>color</button>
-//               <ColorPicker value={highlightColor} onChange={setHighlightColor}/>
-//               <button onClick={toggleVerticalHandler}>vertical</button>
-//               <button onClick={toggleHorizontalHandler}>horizontal</button>
-//             </div>
-//             {treeData.map((node, index) => (
-//               <TreeNode
-//                 key={node.id}
-//                 node={node}
-//                 isLast={index === treeData.length - 1}
-//               />
-//             ))}
-//           </div>
-//         </aside>
-//         right column content viewer
-//         <section className="p-8 flex-1 overflow-y-auto">
-//           <ContentViewer />
-//         </section>
-//       </main>

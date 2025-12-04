@@ -1,5 +1,5 @@
 export const winterBeastAlbumsData = [
-    {
+  {
     artist: "Hail",
     selectName: "Transgression (2024)",
     name: "Transgression",
@@ -15,7 +15,7 @@ export const winterBeastAlbumsData = [
       },
     ],
   },
-    {
+  {
     artist: "Hail",
     selectName: "We Are Nothing (2023)",
     name: "We Are Nothing",
