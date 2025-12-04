@@ -567,7 +567,7 @@ const treeData: TreeNodeProps["node"][] = [
           },
           {
             id: idIncrement(),
-            name: "L'Acephale: Self-Titled (2019)",
+            name: "L'Acephale: Self-titled (2019)",
             type: "file",
             fileType: "pre-wb-album",
           },
@@ -591,7 +591,7 @@ const treeData: TreeNodeProps["node"][] = [
           },
           {
             id: idIncrement(),
-            name: "Night Surgeon: Self-Titled (2013)",
+            name: "Night Surgeon: Self-titled (2013)",
             type: "file",
             fileType: "pre-wb-album",
           },
@@ -615,7 +615,7 @@ const treeData: TreeNodeProps["node"][] = [
           },
           {
             id: idIncrement(),
-            name: "Shalants: Self-Titled (2011)",
+            name: "Shalants: Self-titled (2011)",
             type: "file",
             fileType: "pre-wb-album",
           },

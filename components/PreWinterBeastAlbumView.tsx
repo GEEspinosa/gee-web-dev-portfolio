@@ -1,11 +1,14 @@
 "use client"
 import React from "react";
+// import { useDirectoryToggle } from "@/context/DirectoryToggleContext";
 
 interface PreWinterBeastAlbumProps {
   album: {
     artist: string;
     name: string;
     year: string;
+    rlabel?: string;
+    locations: string [],
     albumArtUrl?: string;
     yourCredits?: string; // e.g., Producer, Engineer
     links?: { label: string; url: string }[];
@@ -15,6 +18,7 @@ interface PreWinterBeastAlbumProps {
 }
 
 export default function PreWinterBeastAlbumView({ album }: PreWinterBeastAlbumProps) {
+    // const {highlightColor} = useDirectoryToggle()
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded shadow-md space-y-6">
       {/* Album Header */}
@@ -31,30 +35,31 @@ export default function PreWinterBeastAlbumView({ album }: PreWinterBeastAlbumPr
           <p className="text-xl text-gray-700">{album.artist}</p>
           <p className="text-md text-gray-500">{album.year}</p>
           {album.yourCredits && (
-            <p className="mt-2 italic text-gray-600">Your credits: {album.yourCredits}</p>
+            <p className="mt-2 italic text-gray-600">Credits: {album.yourCredits}</p>
           )}
         </div>
       </header>
 
       {/* Links Section */}
       {album.links && album.links.length > 0 && (
-        <section>
-          <h2 className="font-semibold text-lg mb-2">Links</h2>
-          <ul className="list-disc list-inside space-y-1">
-            {album.links.map(({ label, url }) => (
-              <li key={url}>
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+       <section>
+    <h2 className="font-semibold text-lg mb-2">Links</h2>
+
+    <ul className="space-y-1">
+      {album.links.map(({ label, url }) => (
+        <li key={url}>
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
       )}
 
       {/* Photos Gallery */}
