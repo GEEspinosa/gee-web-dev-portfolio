@@ -22,7 +22,7 @@ export const preWinterBeastAlbumsData = [
   {
     artist: "L'Acephale",
     selectName: "L'Acephale: Self-titled (2019)",
-    name: "Self-titled",
+    name: "L'Acephale",
     year: "2019",
     rlabel: "",
     locations: ["Hellhole", "Garden Home Studio"],
@@ -42,7 +42,7 @@ export const preWinterBeastAlbumsData = [
   {
     artist: "Twin Perish",
     selectName: "Twin Perish: Blue Pour (2018)",
-    name: "Blue Pour",
+    name: "Blue Pour EP",
     year: "2018",
     rlabel: "",
     locations: ["Garden Home Studio"],
@@ -82,7 +82,7 @@ export const preWinterBeastAlbumsData = [
   {
     artist: "Night Surgeon",
     selectName: "Night Surgeon: Gondola Crimewave (2014)",
-    name: "Gondola Crimewave",
+    name: "Gondola Crimewave EP",
     year: "2014",
     rlabel: "",
     locations: ["Hellhole", "Richy Rich's Satelite Express"],
@@ -103,7 +103,7 @@ export const preWinterBeastAlbumsData = [
   {
     artist: "Night Surgeon",
     selectName: "Night Surgeon: Self-titled (2013)",
-    name: "Self-titled",
+    name: "Night Surgeon EP",
     year: "2013",
     rlabel: "",
     locations: ["The Map Room", "Hellhole"],
