@@ -2,24 +2,12 @@ import GitHubRepoView from "./GitHubRepoView";
 import READMEView from "./READMEView";
 import LiveDemoView from "./LiveDemoView";
 import PreWinterBeastAlbumView from "./PreWinterBeastAlbumView";
+import WinterBeastAlbumView from "./WinterBeastAlbumView";
 import { preWinterBeastAlbumsData } from "@/lib/albumData/preWinterBeastAlbumData";
-
+import { winterBeastAlbumsData } from "@/lib/albumData/winterBeastAlbumData";
 import { useDirectoryToggle } from "../context/DirectoryToggleContext";
 
-// const preWinterBeastAlbums = [
-//   {
-//     artist: "Night Surgeon",
-//     selectName: "Night Surgeon: Gondola Crimewave (2014)",
-//     name: "Gondola Crimewave",
-//     year: "2014",
-//     rlabel: "",
-//     locations: ["Hellhole Studios", "Richy Rich's Satelite Express"],
-//     albumArtUrl: "/images/album-art/gondola-crime-wave.jpg",
-//     yourCredits: "Producer, Engineer, and Mixer",
-//     links: [{label: "Bandcamp", url:"https://nightsurgeon.bandcamp.com/album/gondola-crimewave-ep"}, {label: "Spotify", url: "https://open.spotify.com/album/1LCLrDqVORf8NgB5AfRxVT?si=v6N1cd0tQEGKSrtsd6yYbg"}],
-   
-//   },
-// ];
+
 
 export default function ContentViewer() {
   const { selectedNode } = useDirectoryToggle();
@@ -44,6 +32,16 @@ export default function ContentViewer() {
         return <div>Album data not found.</div>;
       }
       return <PreWinterBeastAlbumView album={album} />;
+    }
+    case "wb-album": {
+      const album = winterBeastAlbumsData.find(
+        (a) => a.selectName === selectedNode.name
+      );
+
+      if (!album) {
+        return <div>Album data not found.</div>;
+      }
+      return <WinterBeastAlbumView album={album} />;
     }
   }
 }
