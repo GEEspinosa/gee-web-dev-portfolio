@@ -75,6 +75,8 @@ export default function ProjectsPage() {
     setHorizontalToggle,
     // selectedNode,
     // setSelectedNode,
+    openAllFolders,
+    closeAllFolders,
   } = useDirectoryToggle();
 
   function toggleColorHandler() {
@@ -111,7 +113,12 @@ export default function ProjectsPage() {
           } h-10`}
         >
           {!sidebarCollapse && (
-            <h1 className="font-mono text-xl" style={{textOverflow: "ellipsis", whiteSpace: "nowrap",}}>Projects Directory</h1>
+            <h1
+              className="font-mono text-xl"
+              style={{ textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+            >
+              Projects Directory
+            </h1>
           )}
 
           <button
@@ -140,6 +147,12 @@ export default function ProjectsPage() {
               />
               <button onClick={toggleVerticalHandler}>vertical</button>
               <button onClick={toggleHorizontalHandler}>horizontal</button>
+              <button onClick={openAllFolders} className="btn-toggle">
+                Exp
+              </button>
+              <button onClick={closeAllFolders} className="btn-toggle">
+                Col
+              </button>
             </div>
             <div
               style={{

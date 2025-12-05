@@ -48,11 +48,20 @@ export default function TreeNode({
     horizontalToggle,
     setSelectedNode,
     selectedNode,
+    openFolders,
+    toggleFolder,
   } = useDirectoryToggle();
   //
   // FOLDER STATE
   //
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+
+  const isOpen = openFolders[node.id] || false
+
+  function toggleOpen() {
+    toggleFolder(node.id)
+  }
+
   const isFolder = node.type === "folder";
   const hasChildren = isFolder && node.children && node.children.length > 0;
 
@@ -188,7 +197,8 @@ export default function TreeNode({
         {/* FOLDER TOGGLE */}
         {isFolder ? (
           <button
-            onClick={() => setIsOpen((prev) => !prev)}
+            // onClick={() => setIsOpen((prev) => !prev)}
+            onClick={toggleOpen}
             style={{
               border: "none",
               background: "none",

@@ -17,6 +17,14 @@ interface DirectoryToggleContextTypes {
 
   selectedNode: TreeNodeProps["node"] | null;
   setSelectedNode: React.Dispatch<React.SetStateAction<TreeNodeProps["node"] | null>>;
+
+
+  ///folder open/close management
+
+  openFolders: Record<number, boolean>;
+  toggleFolder: (id: number) => void;
+  openAllFolders: () => void;
+  closeAllFolders: () => void;
 }
 
 //this will be exported by default for the provider/wrapper
