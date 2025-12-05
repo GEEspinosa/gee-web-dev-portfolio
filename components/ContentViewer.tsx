@@ -7,8 +7,6 @@ import { preWinterBeastAlbumsData } from "@/lib/albumData/preWinterBeastAlbumDat
 import { winterBeastAlbumsData } from "@/lib/albumData/winterBeastAlbumData";
 import { useDirectoryToggle } from "../context/DirectoryToggleContext";
 
-
-
 export default function ContentViewer() {
   const { selectedNode } = useDirectoryToggle();
 
