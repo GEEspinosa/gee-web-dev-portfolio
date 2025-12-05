@@ -26,9 +26,9 @@ export function ClientProvider({
     setOpenFolders((prev) => ({ ...prev, [id]: !prev[id] }));
   }
 
-  function setFolderOpen(id: number, value: boolean) {
-    setOpenFolders((prev) => ({ ...prev, [id]: value }));
-  }
+  // function setFolderOpen(id: number, value: boolean) {
+  //   setOpenFolders((prev) => ({ ...prev, [id]: value }));
+  // }
 
   function collectFolderIds(nodes: TreeNodeProps["node"][]): number[] {
     const ids: number[] = [];

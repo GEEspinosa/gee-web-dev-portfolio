@@ -101,7 +101,7 @@ export default function ProjectsPage() {
         style={{
           width: sidebarCollapse ? 48 : sidebarWidth,
           transition: !resizing ? "width 0.25s ease" : "none",
-          overflow: "hidden",
+          // overflow: "hidden",
           // Optional: reduce right padding when expanded to let button move closer
           paddingRight: sidebarCollapse ? "2rem" : "1rem",
         }}
