@@ -20,14 +20,14 @@ interface PreWinterBeastAlbumProps {
 export default function PreWinterBeastAlbumView({ album }: PreWinterBeastAlbumProps) {
     // const {highlightColor} = useDirectoryToggle()
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded shadow-md space-y-6">
+    <div className="max-w-4xl mx-auto p-6 bg-gray-50 rounded shadow-md space-y-6">
       {/* Album Header */}
       <header className="flex items-center space-x-6">
         {album.albumArtUrl && (
           <img
             src={album.albumArtUrl}
             alt={`${album.artist} - ${album.name} album art`}
-            className="w-40 h-40 object-cover rounded"
+            className="w-40 h-40 object-cover rounded border border-gray-100"
           />
         )}
         <div>
