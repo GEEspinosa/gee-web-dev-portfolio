@@ -46,13 +46,14 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-gray-50 rounded-lg shadow-md flex flex-col gap-4">
       <input
         name="name"
         value={formData.name}
         onChange={handleChange}
         placeholder="Name"
         required
+        className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
       <input
         type="email"
@@ -61,12 +62,14 @@ export default function ContactForm() {
         onChange={handleChange}
         placeholder="Email"
         required
+        className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
       <input
         name="subject"
         value={formData.subject}
         onChange={handleChange}
         placeholder="Subject"
+        className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
       <textarea
         name="text"
@@ -74,9 +77,11 @@ export default function ContactForm() {
         onChange={handleChange}
         placeholder="Message"
         required
+        rows={5}
+        className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
       />
-      <button>Send</button>
-      {status && <p>{status}</p>}
+      <button type="submit" className="bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition">Send</button>
+      {status && <p className="mt-2 text-center text-sm text-gray-700">{status}</p>}
     </form>
   );
 }
