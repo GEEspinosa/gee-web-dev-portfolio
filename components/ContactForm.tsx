@@ -35,7 +35,7 @@ export default function ContactForm() {
     try {
       await contactFormSchema.validate(formData, { abortEarly: false });
 
-      const response = await fetch("http://localhost:3001/api/contact", {
+      const response = await fetch("https://web-dev-site-contact-form-backend.onrender.com/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
