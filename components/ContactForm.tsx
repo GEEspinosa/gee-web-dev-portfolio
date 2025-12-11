@@ -32,8 +32,11 @@ export default function ContactForm() {
     setIsSending(true);
     setStatus(null);
 
+
     try {
+   
       await contactFormSchema.validate(formData, { abortEarly: false });
+    
 
       const response = await fetch("http://localhost:3001/api/contact", {
         method: "POST",
@@ -44,10 +47,13 @@ export default function ContactForm() {
       if (response.ok) {
         setStatus("Message sent successfully!");
         setFormData(initialFormData);
+ 
       } else {
         setStatus("Failed to send message.");
+   
       }
     } catch (validationError) {
+    
       if (validationError instanceof yup.ValidationError) {
         setStatus(validationError.errors.join(", "));
         console.log("Validation errors:", validationError.errors);
@@ -70,7 +76,7 @@ export default function ContactForm() {
     <form
       onSubmit={handleSubmit}
       className="max-w-md mx-auto p-6 bg-gray-50 rounded-lg shadow-md flex flex-col gap-4"
-      // noValidate
+      noValidate
     >
       <input
         name="name"
@@ -128,6 +134,7 @@ export default function ContactForm() {
           >
             {status}
           </p>
+          {/* <pre className="text-black bg-yellow-200 p-2">{status}</pre> */}
         </>
       )}
     </form>
