@@ -6,7 +6,7 @@ export default function contactPage () {
         
         <main className="p-8">
             {/* <Link href="/">Back</Link> */}
-            <h1 className="mt-4">Say Hello!</h1>
+            <h1 className="mt-4">Say fuck you Hello!</h1>
             <ContactForm/>
         </main>
 

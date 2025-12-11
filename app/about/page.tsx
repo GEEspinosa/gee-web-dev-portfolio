@@ -1,14 +1,15 @@
-import Link from "next/link";
+// import Link from "next/link";
 
 //about page related metadata here...
 
 
 export default function AboutPage() {
+  
   return (
     <main className="p-8">
-      <Link href="/" className="text-blue-600 hover:underline">
+      {/* <Link href="/" className="text-blue-600 hover:underline">
         ← Back to Home
-      </Link>
+      </Link> */}
       <section>
         <h1 className="text-3xl font-bold mt-6">About Me</h1>
         <p className="mt-4 text-lg leading-relaxed">

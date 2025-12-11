@@ -1,5 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import * as yup from "yup";
+import { contactFormSchema } from "../lib/schemas/contactSchema";
 
 type FormData = {
   name: string;
@@ -12,8 +14,10 @@ const initialFormData = { name: "", email: "", subject: "", text: "" };
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
-
   const [status, setStatus] = useState<string | null>(null);
+  const [isSending, setIsSending] = useState(false);
+
+  console.log("Rendering ContactForm");
 
   function handleChange(
     e: React.ChangeEvent<
@@ -25,8 +29,12 @@ export default function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setIsSending(true);
+    setStatus(null);
 
     try {
+      await contactFormSchema.validate(formData, { abortEarly: false });
+
       const response = await fetch("http://localhost:3001/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -39,14 +47,31 @@ export default function ContactForm() {
       } else {
         setStatus("Failed to send message.");
       }
-    } catch (error) {
-      setStatus("Error sending message.");
-      console.log(error);
+    } catch (validationError) {
+      if (validationError instanceof yup.ValidationError) {
+        setStatus(validationError.errors.join(", "));
+        console.log("Validation errors:", validationError.errors);
+      } else {
+        setStatus("Error sending message.");
+        console.log(validationError);
+      }
+    } finally {
+      setIsSending(false);
     }
   }
 
+  useEffect(() => {
+    if (status !== null) {
+      console.log("Status changed:", status);
+    }
+  }, [status]);
+
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 bg-gray-50 rounded-lg shadow-md flex flex-col gap-4">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto p-6 bg-gray-50 rounded-lg shadow-md flex flex-col gap-4"
+      // noValidate
+    >
       <input
         name="name"
         value={formData.name}
@@ -80,8 +105,31 @@ export default function ContactForm() {
         rows={5}
         className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
       />
-      <button type="submit" className="bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition">Send</button>
-      {status && <p className="mt-2 text-center text-sm text-gray-700">{status}</p>}
+      <button
+        type="submit"
+        disabled={isSending}
+        className={`py-3 rounded-md transition ${
+          isSending
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-blue-600 hover:bg-blue-700 text-white"
+        }`}
+      >
+        {isSending ? "Sending..." : "Send"}
+      </button>
+      {status && (
+        <>
+          <p
+            aria-live="polite"
+            className={`mt-2 text-center text-sm ${
+              status.includes("successfully")
+                ? "text-green-600"
+                : "text-red-600"
+            }`}
+          >
+            {status}
+          </p>
+        </>
+      )}
     </form>
   );
 }
