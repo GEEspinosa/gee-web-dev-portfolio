@@ -12,7 +12,7 @@ export default function AboutPage() {
       </Link> */}
       <section>
         <h1 className="text-3xl font-bold mt-6">About Me</h1>
-        <p className="mt-4 text-lg leading-relaxed">
+        <p className="mt-4 text-lg leading-relaxed font-mono">
           I’m a software engineer passionate about building creative,
           human-centered apps.
         </p>
