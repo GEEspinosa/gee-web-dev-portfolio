@@ -11,7 +11,7 @@ export default function ContentViewer() {
   const { selectedNode } = useDirectoryToggle();
 
   if (!selectedNode || selectedNode.type === "folder") {
-    return <div>Please selected a file for viewing.</div>;
+    return <div className="font-mono">Please selected a file for viewing.</div>;
   }
 
   switch (selectedNode.fileType) {
