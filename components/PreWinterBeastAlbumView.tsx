@@ -31,11 +31,11 @@ export default function PreWinterBeastAlbumView({ album }: PreWinterBeastAlbumPr
           />
         )}
         <div>
-          <h1 className="text-3xl font-bold">{album.name}</h1>
-          <p className="text-xl text-gray-700">{album.artist}</p>
-          <p className="text-md text-gray-500">{album.year}</p>
+          <h1 className="text-3xl font-bold font-sans text-gray-800">{album.name}</h1>
+          <p className="text-xl font-semibold text-gray-700 font-sans">{album.artist}</p>
+          <p className="text-md text-gray-600 font-mono">{album.year}</p>
           {album.yourCredits && (
-            <p className="mt-2 italic text-gray-600">Credits: {album.yourCredits}</p>
+            <p className="mt-2 italic text-gray-700 font-mono">Credits: {album.yourCredits}</p>
           )}
         </div>
       </header>
@@ -43,16 +43,16 @@ export default function PreWinterBeastAlbumView({ album }: PreWinterBeastAlbumPr
       {/* Links Section */}
       {album.links && album.links.length > 0 && (
        <section>
-    <h2 className="font-semibold text-lg mb-2">Links</h2>
+    <h2 className="font-semibold text-gray-700 font-sans text-lg mb-2">Links</h2>
 
-    <ul className="space-y-1">
+    <ul className="flex gap-4 mt-4 font-mono">
       {album.links.map(({ label, url }) => (
         <li key={url}>
           <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-gray-900 transition-colors"
+            className="flex items-center gap-2 text-gray-800 p-4 bg-gray-200 rounded hover:text-white hover:bg-black transition"
           >
             {label}
           </a>

@@ -43,7 +43,7 @@ export default function ContactPage() {
             <a
               href="https://www.linkedin.com/in/geespinosa"
               target="_blank"
-              className="flex items-center gap-2 text-gray-800 p-4 bg-gray-200 p-4 rounded hover:text-white hover:bg-black transition"
+              className="flex items-center gap-2 text-gray-800 p-4 bg-gray-200 rounded hover:text-white hover:bg-black transition"
             >
               <Linkedin className="w-5 h-5" />
               <span>LinkedIn</span>
