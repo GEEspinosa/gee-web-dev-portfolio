@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 *,
 *::before,
 *::after {
@@ -23,7 +22,6 @@
   :root {
     --background: #ffffff;
     --foreground: #000000;
-    
   }
 }
 
@@ -33,7 +31,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
 }
@@ -51,7 +50,6 @@ main {
 .underline-no-skip {
   text-decoration-skip-ink: none;
 }
-
 
 .arrow-rotate-left {
   transform-origin: 50% 56%;
@@ -80,6 +78,13 @@ main {
   white-space: pre;
   position: fixed;
   inset: 0;
+  font-family: "DejaVu Sans Mono", "Courier New", monospace;
+  white-space: pre;
+  line-height: 1;
+  font-size: 12px; /* or your preferred size */
+  white-space: pre;
+overflow-wrap: normal;
+word-break: normal;
 }
 
 .markdown-content h1 {
@@ -126,5 +131,3 @@ main {
   background: none !important;
   color: inherit !important;
 }
-
-
