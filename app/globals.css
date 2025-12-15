@@ -60,6 +60,13 @@ body {
   transform: rotate(-180deg) translateY(0.4px);
 } */
 
+#ascii-layer {
+  font-family: monospace;
+  white-space: pre;
+  position: fixed;
+  inset: 0;
+}
+
 .markdown-content h1 {
   font-size: 2rem;
   font-weight: 700;
