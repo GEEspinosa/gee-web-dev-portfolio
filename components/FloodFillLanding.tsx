@@ -14,28 +14,12 @@ export default function FloodFillLanding() {
   }, []);
 
   return (
-    <section>
-      <pre
-        ref={preRef}
-        id="ascii-layer"
-        onClick={() => animateRef.current?.()}
-        className="fixed inset-0 font-mono leading-none select-none"
-      />
-
-      <div className="min-h-screen flex flex-col items-center justify-center text-center pointer-events-none">
-        <h1 className="text-4xl font-semibold mb-4 font-sans">
-          Gabriel Eduardo Espinosa
-        </h1>
-
-        <p className="text-lg mb-6 font-mono">
-          Audio Engineer | Web Developer
-        </p>
-
-        <p className="max-w-xl font-mono text-gray-700">
-          I’m a recording engineer and web developer exploring creative tools
-          inspired by audio, sound, and community-driven arts
-        </p>
-      </div>
-    </section>
+    <pre
+      ref={preRef}
+      id="ascii-layer"
+      onClick={() => animateRef.current?.()}
+      className="pointer-events-auto absolute inset-0 z-0 font-mono text-green-800 leading-none whitespace-pre select-none"
+      style={{ width: "100%", height: "100%" }}
+    />
   );
 }

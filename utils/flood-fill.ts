@@ -6,11 +6,31 @@ interface Cell {
 }
 
 export function createFloodFill(preEl: HTMLPreElement) {
-  const CELL_SIZE = 12;
-  const cols = Math.floor(window.innerWidth / CELL_SIZE);
-  const rows = Math.floor(window.innerHeight / CELL_SIZE);
+  //const CELL_SIZE = 12;
 
-  const grid:Cell[] = [];
+  function getCellSize(preEl: HTMLPreElement) {
+  const span = document.createElement('span');
+  span.textContent = 'M'; // typical wide char
+  span.style.fontFamily = getComputedStyle(preEl).fontFamily;
+  span.style.fontSize = getComputedStyle(preEl).fontSize;
+  span.style.position = 'absolute';
+  span.style.visibility = 'hidden';
+  preEl.appendChild(span);
+  const rect = span.getBoundingClientRect();
+  preEl.removeChild(span);
+  return { width: rect.width, height: rect.height };
+}
+
+  
+
+  const { width: cellWidth, height: cellHeight } = getCellSize(preEl);
+
+  const rect = preEl.getBoundingClientRect();
+
+  const cols = Math.floor(rect.width / cellWidth);
+  const rows = Math.floor(rect.height / cellHeight);
+
+  const grid: Cell[] = [];
 
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {

@@ -16,7 +16,7 @@ export default function Header() {
 
 
   return (
-    <header className="flex items-center justify-between p-6 border-b border-gray-200 bg-white ">
+    <header className="relative z-20 flex items-center justify-between p-6 border-b border-gray-200 bg-white ">
       <Link href="/" className="text-2xl font-semibold text-gray-900 ">
         GEE
       </Link>
