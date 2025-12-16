@@ -657,10 +657,11 @@ export function createFloodFill(
   cellWidth: number,
   cellHeight: number,
   originX?: number,
-  originY?: number
+  originY?: number,
+  onRequestFrame?: (id: number) => void
 ) {
   const densityChars = ["⠂", "⠆", "⠇", "⠏", "⠟", "⠿"];
-  const densityCharsFlipped = [" ", "⠂", "⠆", "⠇", "⠏", "⠟", "⠿"]; // Use same chars both sides for symmetry
+  // const densityCharsFlipped = [" ", "⠂", "⠆", "⠇", "⠏", "⠟", "⠿"]; // Use same chars both sides for symmetry
 
   // Fudge factor to adjust horizontal distance for cell aspect ratio
   const fudgeFactor = cellWidth / cellHeight;
@@ -741,7 +742,8 @@ export function createFloodFill(
     render();
 
     if (progress < 1) {
-      requestAnimationFrame(animateFill);
+      const id = requestAnimationFrame(animateFill);
+      if (onRequestFrame) onRequestFrame(id);
     }
   }
 
