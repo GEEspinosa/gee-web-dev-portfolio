@@ -18,7 +18,7 @@ export default function FloodFillLanding() {
 
   function measureCellSize(preEl: HTMLPreElement) {
     const span = document.createElement("span");
-    span.textContent = "⠿";
+    span.textContent = "[";
     span.style.fontFamily = "'DejaVu Sans Mono', 'Courier New', monospace";
     span.style.fontSize = getComputedStyle(preEl).fontSize;
     span.style.position = "absolute";
@@ -108,9 +108,11 @@ export default function FloodFillLanding() {
         ref={preRef}
         onClick={handleClick}
         style={{
+          
           color: "gray",
           fontFamily: "'DejaVu Sans Mono', 'Courier New', monospace",
           whiteSpace: "pre",
+        
           lineHeight: `${grid?.cellHeight ?? 18}px`,
           overflowWrap: "normal",
           wordBreak: "normal",
@@ -120,9 +122,11 @@ export default function FloodFillLanding() {
           width: grid ? `${grid.cols * grid.cellWidth}px` : "100%",
           height: grid ? `${grid.rows * grid.cellHeight}px` : "100%",
           letterSpacing: "0",
+          
           fontVariantLigatures: "none",
           WebkitFontSmoothing: "antialiased",
           MozOsxFontSmoothing: "grayscale",
+           textRendering: "optimizeLegibility", // add this
           zIndex: 0,
           overflow: "hidden",
           textAlign: "left",

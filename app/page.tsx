@@ -6,7 +6,7 @@ export default function HomePage() {
       <FloodFillLanding />
 
       {/* This div is the content over the flood fill, styles untouched */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none z-10">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none z-10 ">
         <h1 className="text-4xl font-semibold mb-4 font-sans">
           Gabriel Eduardo Espinosa
         </h1>
