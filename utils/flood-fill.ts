@@ -17,14 +17,14 @@ export function createFloodFill(
   onRequestFrame?: (id: number) => void
 ) {
   // const densityChars = ["⠂", "⠆", "⠇", "⠏", "⠟", "⠿"];
-  const densityChars = ["["];
+  const densityChars = ["/"]; // basic chars keep from drift fx unlike braille
   // const densityCharsFlipped = [" ", "⠂", "⠆", "⠇", "⠏", "⠟", "⠿"]; // Use same chars both sides for symmetry
 
   // Fudge factor to adjust horizontal distance for cell aspect ratio
   const fudgeFactor = cellWidth / cellHeight;
 
   // Use floating point origin centered between cells for better symmetry
-  const centerX = (originX !== undefined ? originX : cols / 2);
+  const centerX = (originX !== undefined ? originX : cols / 2) - 0.5;
   const centerY = originY !== undefined ? originY : rows / 2;
 
   const grid: Cell[] = [];
