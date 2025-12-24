@@ -83,7 +83,9 @@ export default function AboutPage() {
               Background
             </h2>
             <p className="font-sans">
-              Audio engineering, philosophy, software development
+              Audio engineering, philosophy, software development. Tutored and
+              volunteered with nonprofits supporting music programs and local
+              artists. Amateur analog photographer.
             </p>
           </div>
 
