@@ -21,17 +21,37 @@ export default function AboutPage() {
           <hr className="border-gray-200 max-w-prose my-2" />
 
           <div className="space-y-5 leading-relaxed text-gray-700 max-w-prose font-sans">
-            <p>Most work problems benefit from slowing down at the start…</p>
-
-            <p>Simple systems tend to last…</p>
-
-            <p>Collaboration works best when expectations are visible…</p>
-
-            <p>Tools are situational…</p>
+            <p>
+              Most projects benefit from slowing down at the start, defining a
+              clear ideal outcome while staying realistic about time, budget,
+              and tools. Open conversations with everyone involved help uncover
+              hidden challenges and align expectations.
+            </p>
 
             <p>
-              Current interests sit where technology, sound, and place
-              intersect…
+              Simple, well-designed systems last because every part serves the
+              whole. When details fit precisely, complexity fades into clarity,
+              making the system easier to understand, share, and build upon.
+            </p>
+
+            <p>
+              Collaboration thrives on transparency. Clear communication breaks
+              down silos, builds trust, and keeps teams connected. Without it,
+              misunderstandings grow and teamwork fractures.
+            </p>
+
+            <p>
+              Tools should match intention. Sometimes a screwdriver is better
+              than a multitool because it fits the task. Meaningful creation
+              happens when people engage deeply with their process, even as
+              automation changes what is possible.
+            </p>
+
+            <p>
+              Current interests live at the intersection of technology, sound,
+              and place. Spaces carry stories that shape creative work, more
+              than backgrounds, they are active meaning-makers influencing every
+              step.
             </p>
           </div>
 
@@ -64,6 +84,46 @@ export default function AboutPage() {
             </h2>
             <p className="font-sans">
               Audio engineering, philosophy, software development
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-mono text-[11px] uppercase tracking-widest text-gray-500">
+              Tech Stack
+            </h2>
+            <p className="font-sans">
+              JavaScript, TypeScript, HTML, CSS, Tailwind, Styled-Components,
+              Node.js, Next.js, Express, SQL
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-mono text-[11px] uppercase tracking-widest text-gray-500">
+              Learning
+            </h2>
+            <p className="font-sans">C++, Python, REW, JUCE</p>
+          </div>
+
+          <div>
+            <h2 className="font-mono text-[11px] uppercase tracking-widest text-gray-500">
+              Audio Tools
+            </h2>
+            <p className="font-sans">
+              Pro Tools, FabFilter, Valhalla, UAD, Waves
+              <br />
+              Neumann U87 AI, KM 184, AKG 414 ULS-B, Sennheiser MKH 8090, plus
+              various dynamic microphones
+              <br />
+              Multichannel audio preamps and Lynx converters
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-mono text-[11px] uppercase tracking-widest text-gray-500">
+              Current Focus
+            </h2>
+            <p className="font-sans">
+              Convolution and algorithmic reverb, spatial audio analysis
             </p>
           </div>
         </aside>
