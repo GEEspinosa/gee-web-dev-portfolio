@@ -5,14 +5,20 @@ export default function AboutPage() {
         {/* Main content */}
         <section className="md:col-span-2 space-y-6">
           {/* header + body */}
-          <header className="space-y-2">
-            <h1 className="text-3xl font-semibold tracking-tight font-sans">About</h1>
+          <header className="space-y-3">
+            <h1 className="text-3xl font-semibold tracking-tight">About</h1>
 
             <p className="text-gray-600 max-w-prose">
               Notes on approach, collaboration, and current interests.
             </p>
+
+            <p className="text-sm text-gray-500 max-w-prose">
+              This site documents ongoing work across software, audio, and
+              spatial research.
+            </p>
           </header>
-          <hr className="border-gray-200 max-w-prose" />
+
+          <hr className="border-gray-200 max-w-prose my-2" />
 
           <div className="space-y-5 leading-relaxed text-gray-700 max-w-prose font-sans">
             <p>Most work problems benefit from slowing down at the start…</p>
@@ -28,10 +34,23 @@ export default function AboutPage() {
               intersect…
             </p>
           </div>
+
+          <div className="pt-4">
+            <p className="text-sm text-gray-600">
+              Related work and experiments live in the{" "}
+              <a
+                href="/projects"
+                className="underline underline-offset-4 hover:text-gray-800"
+              >
+                Projects directory
+              </a>
+              .
+            </p>
+          </div>
         </section>
 
         {/* Metadata / aside */}
-        <aside className="space-y-6 border-l border-gray-200 pl-6 text-sm opacity-90 md:opacity-100">
+        <aside className="space-y-6 md:border-l border-gray-200 md:pl-6 text-sm opacity-90 md:opacity-100">
           <div>
             <h2 className="font-mono text-[11px] uppercase tracking-widest text-gray-500">
               Location
@@ -43,7 +62,9 @@ export default function AboutPage() {
             <h2 className="font-mono text-[11px] uppercase tracking-widest text-gray-500">
               Background
             </h2>
-            <p className="font-sans">Audio engineering, philosophy, software development</p>
+            <p className="font-sans">
+              Audio engineering, philosophy, software development
+            </p>
           </div>
         </aside>
       </div>
