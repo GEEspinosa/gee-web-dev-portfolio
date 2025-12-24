@@ -6,7 +6,7 @@ export default function AboutPage() {
         <section className="md:col-span-2 space-y-6">
           {/* header + body */}
           <header className="space-y-2">
-            <h1 className="text-3xl font-semibold tracking-tight">About</h1>
+            <h1 className="text-3xl font-semibold tracking-tight font-sans">About</h1>
 
             <p className="text-gray-600 max-w-prose">
               Notes on approach, collaboration, and current interests.
@@ -14,7 +14,7 @@ export default function AboutPage() {
           </header>
           <hr className="border-gray-200 max-w-prose" />
 
-          <div className="space-y-5 leading-relaxed text-gray-700 max-w-prose">
+          <div className="space-y-5 leading-relaxed text-gray-700 max-w-prose font-sans">
             <p>Most work problems benefit from slowing down at the start…</p>
 
             <p>Simple systems tend to last…</p>
@@ -36,14 +36,14 @@ export default function AboutPage() {
             <h2 className="font-mono text-[11px] uppercase tracking-widest text-gray-500">
               Location
             </h2>
-            <p>Portland, Oregon</p>
+            <p className="font-sans">Portland, Oregon</p>
           </div>
 
           <div>
             <h2 className="font-mono text-[11px] uppercase tracking-widest text-gray-500">
               Background
             </h2>
-            <p>Audio engineering, philosophy, software development</p>
+            <p className="font-sans">Audio engineering, philosophy, software development</p>
           </div>
         </aside>
       </div>
