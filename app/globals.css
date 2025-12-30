@@ -47,6 +47,7 @@ main {
   flex-grow: 1;
   position: relative;
 }
+
 .underline-no-skip {
   text-decoration-skip-ink: none;
 }
